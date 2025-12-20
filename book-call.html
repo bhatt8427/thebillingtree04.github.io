@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book a Call - The Billing Tree</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Lora', serif;
+      background-color: var(--dl-color-gray-white, #fff);
+      color: var(--dl-color-gray-black, #111);
+      margin: 0;
+      padding: 0;
+    }
+
+    .book-call-section {
+      max-width: 700px;
+      margin: 80px auto;
+      padding: 20px;
+      background: #f9f9f9;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .book-call-section h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .book-call-section p {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #555;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    label {
+      display: flex;
+      flex-direction: column;
+      font-weight: 500;
+      color: #333;
+    }
+
+    input, select, textarea {
+      margin-top: 5px;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    button[type="submit"] {
+      background-color: #2e7d32; /* Green tone like your site */
+      color: #fff;
+      padding: 12px 20px;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #1b5e20;
+    }
+
+    @media (max-width: 768px) {
+      .book-call-section {
+        margin: 40px 20px;
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="book-call-section">
+    <h1>Book a Call with The Billing Tree</h1>
+    <p>Fill out the form below and we'll reach out to schedule a call.</p>
+
+    <form action="https://formspree.io/f/movbgdal" method="POST">
+      <label>
+        Name:
+        <input type="text" name="name" required />
+      </label>
+
+      <label>
+        Practice Name:
+        <input type="text" name="practice_name" required />
+      </label>
+
+     <label>
+  Email:
+<input
+  type="email"
+  name="email"
+  id="email"
+  placeholder="example@domain.com"
+  required
+/>
+     </label>
+<span id="emailError" style="color:red; display:none;">Please enter a valid email address.</span>
+
+<script>
+  const emailInput = document.getElementById('email');
+  const emailError = document.getElementById('emailError');
+
+  emailInput.addEventListener('blur', () => {
+    // HTML5 already validates, but we can add a regex check
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(emailInput.value)) {
+      emailError.style.display = 'inline';
+    } else {
+      emailError.style.display = 'none';
+    }
+  });
+</script>
+
+     <label>
+  Phone:
+<input
+  type="tel"
+  name="phone"
+  id="phone"
+  pattern="\d{10}"
+  maxlength="10"
+  placeholder="1234567890"
+  required
+/>
+     </label>
+<span id="phoneError" style="color:red; display:none;">Please enter a valid 10-digit phone number.</span>
+
+<script>
+  const phoneInput = document.getElementById('phone');
+  const phoneError = document.getElementById('phoneError');
+
+  phoneInput.addEventListener('input', () => {
+    const phoneValue = phoneInput.value.replace(/\D/g, ''); // Remove non-digits
+    phoneInput.value = phoneValue; // Keep only digits
+
+    if (phoneValue.length > 10) {
+      phoneInput.value = phoneValue.slice(0, 10); // Limit to 10 digits
+    }
+  });
+
+  phoneInput.addEventListener('blur', () => {
+    if (phoneInput.value.length !== 10) {
+      phoneError.style.display = 'inline';
+    } else {
+      phoneError.style.display = 'none';
+    }
+  });
+</script>
+
+
+      <label>
+        Specialty:
+        <input type="text" name="specialty" />
+      </label>
+
+      <label>
+        Services Needed:
+        <input type="text" name="services_needed" />
+      </label>
+
+      <label>
+        Preferred Contact Method:
+        <select name="contact_method">
+          <option value="phone">Phone</option>
+          <option value="email">Email</option>
+        </select>
+      </label>
+
+      <label>
+        Notes:
+        <textarea name="notes"></textarea>
+      </label>
+
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+</body>
+</html>
+
+
