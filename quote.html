@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get a Quote - The Billing Tree</title>
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Lato:wght@400;700&display=swap"
+  />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" />
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="./index.css" />
+  <style>
+    body {
+      font-family: 'Lato', sans-serif;
+      background-color: #f8f8f8;
+      margin: 0;
+      padding: 0;
+    }
+    /* page-specific header styling removed to allow shared `.home-header1` styles */
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      background: white;
+      padding: 3rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      font-family: 'Lora', serif;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    form label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    form input, form select, form textarea {
+      width: 100%;
+      padding: 0.6rem;
+      margin-top: 0.3rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    form button {
+      margin-top: 1.5rem;
+      padding: 0.8rem 1.5rem;
+      background-color: #004d40;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    form button:hover {
+      background-color: #00695c;
+    }
+    
+    /* demo preview removed */
+    .demo-form-card {
+      max-width: 800px;
+      margin: 18px auto 28px;
+      background: white;
+      padding: 26px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(11,22,33,0.06);
+    }
+    @media (max-width: 900px) {
+      .demo-hero { grid-template-columns: 1fr; }
+    }
+  </style>
+  </head>
+<body>
+<div class="home-container1">
+  <header class="home-header1">
+    <div class="home-navbar-interactive">
+      <div class="home-branding1">
+        <svg viewBox="0 0 1024 1024" class="home-icon10"><path d="M128 128h768v768h-768z"></path></svg>
+        <a href="index.html" class="home-text10">The Billing Tree</a>
+      </div>
+      <!-- mobile hamburger (visible via CSS at small widths) -->
+      <button class="home-burger-menu" id="mobile-menu-open" aria-label="Open menu">
+        <svg width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg"><rect y="0" width="20" height="2" rx="1" fill="#122821"/><rect y="6" width="20" height="2" rx="1" fill="#122821"/><rect y="12" width="20" height="2" rx="1" fill="#122821"/></svg>
+      </button>
+
+      <nav class="home-desktop-menu">
+        <div class="home-links1">
+          <a href="index.html#about" class="home-button1 button">About Us</a>
+          <div class="dropdown">
+            <button class="home-button1 button dropbtn">Services</button>
+            <div class="dropdown-content">
+              <a href="frontend.html">Front End</a>
+              <a href="midcycle.html">Mid Cycle</a>
+              <a href="backend.html">Back End</a>
+            </div>
+          </div>
+          <a href="index.html#contact" class="home-button1 button">Contact</a>
+          <a href="index.html#ai-consulting" class="home-button1 button">AI Consulting</a>
+          <a href="quote.html" class="home-button2 button">Get a fast quote</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile menu (slides in) -->
+  <div class="home-mobile-menu" id="mobile-menu" aria-hidden="true">
+    <div class="home-top">
+      <div class="home-branding2">
+        <a href="index.html" class="home-text13">The Billing Tree</a>
+      </div>
+      <div class="home-menu-close">
+        <button id="mobile-menu-close" aria-label="Close menu">✕</button>
+      </div>
+    </div>
+    <nav class="mobile-links">
+      <a href="index.html#about" class="home-button1 button">About Us</a>
+      <div class="dropdown">
+        <button class="home-button1 button dropbtn">Services</button>
+        <div class="dropdown-content">
+          <a href="frontend.html">Front End</a>
+          <a href="midcycle.html">Mid Cycle</a>
+          <a href="backend.html">Back End</a>
+        </div>
+      </div>
+      <a href="index.html#contact" class="home-button1 button">Contact</a>
+      <a href="index.html#ai-consulting" class="home-button1 button">AI Consulting</a>
+      <a href="quote.html" class="home-button2 button">Get a fast quote</a>
+      <a href="book-call.html" class="home-button1 button">Book a Call</a>
+    </nav>
+  </div>
+
+  <main>
+    <!-- demo hero removed -->
+
+    <section class="demo-form-card">
+      <h2 style="margin:0 0 12px 0;">Book Your Demo</h2>
+      <form action="https://formspree.io/f/mzzovnky" method="POST">
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" required />
+
+      <label for="practice">Practice Name</label>
+      <input type="text" name="practice" id="practice" required />
+
+<label for="email">Email</label>
+<input
+  type="email"
+  name="email"
+  id="email"
+  placeholder="example@domain.com"
+  required
+/>
+<span id="emailError" style="color:red; display:none;">Please enter a valid email address.</span>
+
+<script>
+  const emailInput = document.getElementById('email');
+  const emailError = document.getElementById('emailError');
+
+  emailInput.addEventListener('blur', () => {
+    // HTML5 already validates, but we can add a regex check
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(emailInput.value)) {
+      emailError.style.display = 'inline';
+    } else {
+      emailError.style.display = 'none';
+    }
+  });
+</script>
+
+<label for="phone">Phone</label>
+<input
+  type="tel"
+  name="phone"
+  id="phone"
+  pattern="\d{10}"
+  maxlength="10"
+  placeholder="1234567890"
+  required
+/>
+<span id="phoneError" style="color:red; display:none;">Please enter a valid 10-digit phone number.</span>
+
+<script>
+  const phoneInput = document.getElementById('phone');
+  const phoneError = document.getElementById('phoneError');
+
+  phoneInput.addEventListener('input', () => {
+    const phoneValue = phoneInput.value.replace(/\D/g, ''); // Remove non-digits
+    phoneInput.value = phoneValue; // Keep only digits
+
+    if (phoneValue.length > 10) {
+      phoneInput.value = phoneValue.slice(0, 10); // Limit to 10 digits
+    }
+  });
+
+  phoneInput.addEventListener('blur', () => {
+    if (phoneInput.value.length !== 10) {
+      phoneError.style.display = 'inline';
+    } else {
+      phoneError.style.display = 'none';
+    }
+  });
+</script>
+
+      <label for="specialty">Specialty</label>
+      <input type="text" name="specialty" id="specialty" />
+
+      <label for="services">Services Needed</label>
+      <input type="text" name="services" id="services" />
+
+      <label for="claims"># of Monthly Claims</label>
+      <input type="number" name="claims" id="claims" min="0" />
+
+      <label for="contact-method">Preferred Contact Method</label>
+      <select name="contact-method" id="contact-method">
+        <option value="email">Email</option>
+        <option value="phone">Phone</option>
+      </select>
+
+      <label for="notes">Notes</label>
+      <textarea name="notes" id="notes" rows="4" placeholder="Any specifics we should prepare (EHR, claim examples, goals)"></textarea>
+
+        <button type="submit">Request Demo</button>
+      </form>
+    </section>
+    
+  </main>
+
+  <script>
+    // Mobile menu toggle (same behavior as index.html)
+    (function(){
+    const openBtn = document.getElementById('mobile-menu-open');
+    const closeBtn = document.getElementById('mobile-menu-close');
+    const mobile = document.getElementById('mobile-menu');
+    if(!mobile) return;
+    function open(){ mobile.classList.add('open'); mobile.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+    function close(){ mobile.classList.remove('open'); mobile.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+    openBtn && openBtn.addEventListener('click', open);
+    closeBtn && closeBtn.addEventListener('click', close);
+    mobile.querySelectorAll('a').forEach(a=> a.addEventListener('click', close));
+    mobile.addEventListener('click', (e)=>{ if(e.target === mobile) close(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') close(); });
+  })();
+  </script>
+
+  </div>
+  </body>
+  </html>
+

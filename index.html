@@ -1,0 +1,847 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>The Billing Tree</title>
+  <meta property="og:title" content="The Billing Tree" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta property="twitter:card" content="summary_large_image" />
+
+  <!-- FAVICONS -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+  <!-- Reset CSS -->
+  <style>
+    html { line-height: 1.15; scroll-behavior: smooth; }
+    body { margin: 0; }
+    * { box-sizing: border-box; border-width: 0; border-style: solid; -webkit-font-smoothing: antialiased; }
+    p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption { margin: 0; padding: 0; }
+    img { display: block; }
+    button,input { font-family: inherit; }
+  </style>
+
+  <!-- Default Styles -->
+  <style>
+    html { font-family: Lora; font-size: 16px; }
+    body {
+      font-weight: 400;
+      color: #000;
+      background: #fff;
+      line-height: 1.15;
+    }
+  </style>
+
+  <!-- External Fonts & Scripts -->
+  <link rel="stylesheet" href="https://unpkg.com/animate.css@4.1.1/animate.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="preload" href="./style.css" as="style" onload="this.rel='stylesheet'">
+  <link rel="preload" href="./index.css" as="style" onload="this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./index.css">
+  </noscript>
+
+  <link rel="preload" as="image" href="public/Home page.png">
+
+  <style>
+    /* Critical (minimal) CSS: header + hero to reduce render-blocking */
+    .home-header1{position:fixed;top:0;left:0;right:0;z-index:60;background:linear-gradient(180deg,rgba(255,255,255,0.9),rgba(255,255,255,0.85));backdrop-filter:blur(6px);}
+    .home-container1{padding-top:72px;}
+    .home-hero{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:36px 16px;min-height:60vh;}
+    .home-image3{max-width:100%;height:auto;display:block;}
+    @media (max-width:768px){ .home-hero{flex-direction:column;padding:20px;} .home-container1{padding-top:64px;} }
+  </style>
+  
+</head>
+
+<body>
+
+<div class="home-container1">
+
+  <!-- NAVBAR -->
+  <header class="home-header1">
+    <div class="home-navbar-interactive">
+
+      <div class="home-branding1">
+        <svg viewBox="0 0 1024 1024" class="home-icon10">
+          <path d="M128 128h768v768h-768z"></path>
+        </svg>
+        <a href="#" class="home-text10">The Billing Tree</a>
+      </div>
+
+      <nav class="home-desktop-menu">
+        <div class="home-links1">
+          <a href="#about" class="home-button1 button">About Us</a>
+          <div class="dropdown">
+            <button class="home-button1 button dropbtn">Services</button>
+            <div class="dropdown-content">
+              <a href="frontend.html">Front End</a>
+              <a href="midcycle.html">Mid Cycle</a>
+              <a href="backend.html">Back End</a>
+            </div>
+          </div>
+          <a href="#contact" class="home-button1 button">Contact</a>
+          <a href="#ai-consulting" class="home-button1 button">AI Consulting</a>
+          <a href="quote.html" class="home-button2 button">Get a fast quote</a>
+        </div>
+      </nav>
+      <!-- mobile hamburger (visible via CSS at small widths) -->
+      <button class="home-burger-menu" id="mobile-menu-open" aria-label="Open menu">
+        <svg width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg"><rect y="0" width="20" height="2" rx="1" fill="#122821"/><rect y="6" width="20" height="2" rx="1" fill="#122821"/><rect y="12" width="20" height="2" rx="1" fill="#122821"/></svg>
+      </button>
+    </div>  
+  </header>
+
+  <!-- Mobile menu (slides in) -->
+  <div class="home-mobile-menu" id="mobile-menu" aria-hidden="true">
+    <div class="home-top">
+      <div class="home-branding2">
+        <a href="index.html" class="home-text13">The Billing Tree</a>
+      </div>
+      <div class="home-menu-close">
+        <button id="mobile-menu-close" aria-label="Close menu">✕</button>
+      </div>
+    </div>
+    <nav class="mobile-links">
+      <a href="#about" class="home-button1 button">About Us</a>
+      <div class="dropdown">
+        <button class="home-button1 button dropbtn">Services</button>
+        <div class="dropdown-content">
+          <a href="frontend.html">Front End</a>
+          <a href="midcycle.html">Mid Cycle</a>
+          <a href="backend.html">Back End</a>
+        </div>
+      </div>
+      <a href="#contact" class="home-button1 button">Contact</a>
+      <a href="#ai-consulting" class="home-button1 button">AI Consulting</a>
+      <a href="quote.html" class="home-button2 button">Get a fast quote</a>
+      <a href="book-call.html" class="home-button1 button">Book a Call</a>
+    </nav>
+  </div>
+  
+
+  <!-- HERO -->
+  <header class="home-hero">
+    <div class="home-content1">
+      <h1 class="home-title1 animate__animated animate__fadeInUp">The Billing Tree</h1>
+      <span class="home-description1">
+        In the dense jungle of healthcare operations, The Billing Tree rises as a startup rooted in clarity, speed and automation. We’re
+              not just about billing — we’re about transforming the entire
+              patient experience from check-in to check-out.
+      </span>
+      <img alt="line" src="public/line-300w.png" class="home-image1" loading="lazy" decoding="async" />
+    </div>
+
+    <div class="home-image2">
+      <div class="home-image-inner">
+        <img alt="hero-1" src="public/Home page.png" class="home-image3" fetchpriority="high" loading="eager" decoding="async" width="620" height="700" />
+        <span class="home-image-sheen" aria-hidden="true"></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- CURVED CONNECTOR -->
+  <div class="curved-connector">
+    <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path d="M0,60 C300,120 900,0 1200,60 L1200,120 L0,120 Z" fill="#E6F9E0"></path>
+    </svg>
+  </div>
+
+  <!-- MISSION -->
+  <section class="home-mission1">
+    <h2 class="home-text17">
+      The Billing Tree helps providers grow stronger, patients feel seen,
+            and operations stay smooth
+
+    </h2>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section class="home-improve">
+    <div class="home-heading">
+      <h2 class="home-text18">Your Revenue, Rooted in Precision – The Medical Billing Tree That
+              Grows Trust, One Claim at a Time. </h2>
+    </div>
+
+    <div class="home-tabs">
+      <div class="home-switches">
+        <span class="switch switch-active">Connect with professionals</span>
+      </div>
+
+      <div class="home-content2" id="about">
+        <div class="home-details">
+          <div class="home-header2">
+            <h2 class="home-text19">About Us</h2>
+
+            <p class="home-text20">
+              The Billing Tree is a healthcare support company dedicated
+                      to simplifying the business side of medicine. We
+                      specialize in medical billing, front desk management and
+                      appointment scheduling — helping clinics, hospitals, and
+                      private practices run smoothly so they can focus on what
+                      matters most: patient care.
+            </p>
+          </div>
+
+          <a href="quote.html" class="home-button7 button">Get a Quote</a>
+          
+        </div>
+
+        <div class="home-image5">
+          <img
+              alt="about"
+              src="https://images.unsplash.com/photo-1585421514738-01798e348b17?w=1000"
+              class="home-image6"
+              loading="lazy"
+              decoding="async"
+            />
+        </div>
+      </div>
+
+      <!-- SPECIALIZATION SECTION -->
+      <div class="features9-layout186 thq-section-padding">
+        <div class="thq-flex-column thq-section-max-width">
+
+          <h2 class="features9-text1 thq-heading-2">Healthcare Services Specialization</h2>
+
+          <p class="features9-text2 thq-body-large">
+            We don’t do general billing — we master your specialty, aligning people, processes, and technology to maximize revenue and reduce administrative burden.
+          </p>
+
+          <div class="specialties-grid">
+            <div class="specialty-item">
+              <i class="fas fa-heartbeat"></i>
+              <span>Cardiology</span>
+            </div>
+            <div class="specialty-item">
+              <i class="fas fa-cookie-bite"></i>
+              <span>Gastroenterology</span>
+            </div>
+            <div class="specialty-item">
+              <i class="fas fa-brain"></i>
+              <span>Neurology</span>
+            </div>
+            <div class="specialty-item">
+              <i class="fas fa-bone"></i>
+              <span>Orthopedics</span>
+            </div>
+            <div class="specialty-item">
+              <i class="fas fa-child"></i>
+              <span>Pediatrics</span>
+            </div>
+            <div class="specialty-item">
+              <i class="fas fa-allergies"></i>
+              <span>Dermatology</span>
+            </div>
+            <div class="specialty-item">
+              <i class="fas fa-eye"></i>
+              <span>Ophthalmology</span>
+            </div>
+            <div class="specialty-item">
+              <i class="fas fa-tint"></i>
+              <span>Urology</span>
+            </div>
+            <div class="specialty-item">
+              <i class="fas fa-female"></i>
+              <span>Gynecology</span>
+            </div>
+            <div class="specialty-item">
+              <i class="fas fa-user-md"></i>
+              <span>Psychiatry</span>
+            </div>
+            <div class="specialty-item">
+              <i class="fas fa-x-ray"></i>
+              <span>Radiology</span>
+            </div>
+            <div class="specialty-item">
+              <i class="fas fa-disease"></i>
+              <span>Oncology</span>
+            </div>
+            <div class="specialty-item">
+              <i class="fas fa-pills"></i>
+              <span>Endocrinology</span>
+            </div>
+            <div class="specialty-item">
+              <i class="fas fa-lungs"></i>
+              <span>Pulmonology</span>
+            </div>
+            <div class="specialty-item">
+              <i class="fas fa-procedures"></i>
+              <span>Nephrology</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="home-services" id="services">
+    <h2 class="home-text34">What do we serve?</h2>
+
+    <div class="home-cards">
+
+      <div class="home-row1">
+        <div class="card card-card animate__animated animate__fadeInUp">
+          <div class="card-header">
+            <img src="public/group%201643.svg" class="card-icon" loading="lazy" decoding="async" />
+            <h3 class="card-heading">Patient care</h3>
+          </div>
+          <p class="card-text">Seamless patient check-ins, insurance verification, and
+                      real-time communication.</p>
+        </div>
+
+        <div class="card card-card1 animate__animated animate__fadeInUp animate__delay-1s">
+          <div class="card-header1">
+            <img src="public/group%201644.svg" class="card-icon1" loading="lazy" decoding="async" />
+            <h3 class="card-heading1">Coding and Documentation</h3>
+          </div>
+          <p class="card-text1">We translate patient care into precise, compliant codes—capturing every detail, 
+            protecting your practice, and turning documentation into dependable revenue..</p>
+        </div>
+      </div>
+
+      <div class="home-row2">
+        <div class="card card-card2 animate__animated animate__fadeInUp animate__delay-2s">
+          <div class="card-header2">
+            <img src="public/group%201645.svg" class="card-icon2" loading="lazy" decoding="async" />
+            <h3 class="card-heading2">Billing and A/R Management</h3>
+          </div>
+          <p class="card-text2">From clean claims to collected revenue, we track every dollar,
+            chase every follow-up, and keep your cash flow growing—so nothing gets left behind.</p>
+        </div>
+
+        <div class="card card-card3 animate__animated animate__fadeInUp animate__delay-3s">
+          <div class="card-header3">
+            <img src="public/group%201646.svg" class="card-icon3" loading="lazy" decoding="async" />
+            <h3 class="card-heading3">Provider Credentialing & Enrollment</h3>
+          </div>
+          <p class="card-text3">Provider credentialing verifies qualifications, while
+                      enrollment enables billing through insurance networks.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+   
+<section class="home-ai-consulting" id="ai-consulting">
+  <h2 class="home-text-ai-consulting">Our AI Technology</h2>
+
+  <div class="ai-tech-grid">
+
+    <div class="ai-tech-card">
+      <div class="ai-tech-icon">⚙️</div>
+      <h3>Automation</h3>
+      <p>
+        Intelligent automation streamlines scheduling, eligibility verification,
+        prior authorizations, and follow-ups with minimal manual effort.
+      </p>
+    </div>
+
+    <div class="ai-tech-card">
+      <div class="ai-tech-icon">💰</div>
+      <h3>RCM Optimization</h3>
+      <p>
+        AI-driven revenue cycle workflows improve claim accuracy,
+        reduce denials, and accelerate reimbursements.
+      </p>
+    </div>
+
+    <div class="ai-tech-card">
+      <div class="ai-tech-icon">🔗</div>
+      <h3>Data Integration</h3>
+      <p>
+        Seamless integration across EHRs, billing systems, and payer platforms
+        ensures real-time visibility and data consistency.
+      </p>
+    </div>
+
+  </div>
+  <!-- Get in Touch CTA -->
+  <div style="margin-top:28px; text-align:center;">
+    <button class="ai-contact-button" id="open-ai-contact">Get in Touch</button>
+  </div>
+
+  <!-- AI Contact Modal -->
+  <div id="ai-contact-modal" class="ai-modal" style="display:none;">
+    <div class="ai-modal-content">
+      <button class="ai-modal-close" id="ai-contact-close">×</button>
+      <h2>Get in Touch</h2>
+      <form id="ai-contact-form" action="https://formspree.io/f/meejloya" method="POST">
+        <label for="ai-name">Name</label>
+        <input type="text" id="ai-name" name="name" required />
+
+        <label for="ai-email">Email</label>
+        <input type="email" id="ai-email" name="email" required />
+
+        <label for="ai-phone">Phone</label>
+        <input type="tel" id="ai-phone" name="phone" pattern="\d{10}" maxlength="10" />
+
+        <label for="ai-service">Service Type</label>
+        <select id="ai-service" name="service">
+          <option value="Automation">Automation</option>
+          <option value="RCM Optimization">RCM Optimization</option>
+          <option value="Data Integration">Data Integration</option>
+          <option value="Other">Other</option>
+        </select>
+
+        <label for="ai-desc">Description</label>
+        <textarea id="ai-desc" name="description" rows="4" required></textarea>
+
+        <div style="display:flex;gap:12px;align-items:center;margin-top:12px;">
+          <button type="submit" class="home-submit" style="width:auto;padding:10px 18px;">Send</button>
+          <button type="button" class="home-submit" id="ai-contact-cancel" style="background:#aaa;">Cancel</button>
+        </div>
+        <div id="ai-contact-message" style="margin-top:10px;display:none;color:green;"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+  <!-- SOFTWARE LOGOS -->
+  <section class="logos1-container1 thq-section-padding">
+    <div class="logos1-max-width thq-section-max-width">
+
+      <h2 class="logos1-text1 thq-heading-2">Expertise Across 40+ EHR Platforms</h2>
+
+      <div class="thq-grid-6">
+        <img src="./Img/ecw1.png" alt="eClinicalWorks" class="logos1-logo1" />
+        <img src="./Img/Harris-Care-tracker.png" alt="Harris CareTracker" class="logos1-logo2" />
+        <img src="./Img/kareo1.png" alt="Kareo" class="logos1-logo3" />
+        <img src="./Img/nextgen1.png" alt="NextGen" class="logos1-logo4" />
+        <img src="./Img/opendental1.png" alt="Open Dental" class="logos1-logo5" />
+        <img src="./Img/athena.png" alt="Athenahealth" class="logos1-logo6" />
+        <img src="./Img/drchrono.png" alt="DrChrono" class="logos1-logo7" />
+        <img src="./Img/practicefusion.png" alt="PracticeSuite" class="logos1-logo8" />
+        <img src="./Img/advancedMD.png" alt="AdvancedMD" class="logos1-logo9" />
+        <img src="./Img/modmed.png" alt="Modernizing Medicine" class="logos1-logo10" />
+        <img src="./Img/ecw1.png" alt="eClinicalWorks" class="logos1-logo1" />
+        <img src="./Img/Harris-Care-tracker.png" alt="Harris CareTracker" class="logos1-logo2" />
+        <img src="./Img/kareo1.png" alt="Kareo" class="logos1-logo3" />
+        <img src="./Img/nextgen1.png" alt="NextGen" class="logos1-logo4" />
+        <img src="./Img/opendental1.png" alt="Open Dental" class="logos1-logo5" />
+        <img src="./Img/athena.png" alt="Athenahealth" class="logos1-logo6" />
+        <img src="./Img/drchrono.png" alt="DrChrono" class="logos1-logo7" />
+        <img src="./Img/practicefusion.png" alt="PracticeSuite" class="logos1-logo8" />
+        <img src="./Img/advancedMD.png" alt="AdvancedMD" class="logos1-logo9" />
+        <img src="./Img/modmed.png" alt="Modernizing Medicine" class="logos1-logo10" />
+      </div>
+
+    </div>
+  </section>
+
+  <!-- DEMO CTA -->
+  <section class="home-banner">
+    <div class="home-container4">
+      <div class="home-header3">
+        <h2 class="home-title2">Request a Demo now</h2>
+        <p class="home-description3">Tap into smarter billing—request a demo and watch your revenue
+        cycle bloom with The Billing Tree.</p>
+      </div>
+      <a href="book-call.html" class="home-link1 button">
+        
+  <span>Book a Call<br /></span>
+</a>
+    </div>  
+  </section>
+
+  <!-- NEWSLETTER -->
+  <!-- Newsletter Section -->
+<section class="home-newsletter">
+  <div class="home-header4">
+    <form id="newsletterForm" action="https://formspree.io/f/xqanzlnv" method="POST">
+      <h2 class="home-text42">Subscribe to our newsletter</h2>
+      <p class="home-text43">Sign up for our newsletter to get the latest news!</p>
+
+      <div class="home-content4">
+        <div class="home-email">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            class="home-textinput input"
+            name="email"
+            required
+          />
+
+          <button type="submit" class="home-submit">
+            <img alt="submit" src="public/frame.svg" class="home-image40" />
+          </button>
+        </div>
+
+        <div class="home-notice1">
+          <span class="home-notice2">
+            By subscribing, you may receive updates and news from The Billing Tree.
+          </span>
+        </div>
+
+        <div id="newsletterMessage" style="margin-top:10px;color:green;display:none;text-align:center;"></div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById("newsletterForm");
+  const emailInput = form.querySelector('input[name="email"]');
+  const messageDiv = document.getElementById("newsletterMessage");
+
+  form.addEventListener("submit", async function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    const emailValue = emailInput.value.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(emailValue)) {
+      messageDiv.style.color = "red";
+      messageDiv.textContent = "Please enter a valid email address.";
+      messageDiv.style.display = "block";
+      return;
+    }
+
+    // Submit form via Formspree
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        messageDiv.style.color = "green";
+        messageDiv.textContent = "Thank you! You’ve successfully subscribed.";
+        messageDiv.style.display = "block";
+        form.reset();
+      } else {
+        messageDiv.style.color = "red";
+        messageDiv.textContent = "Oops! Something went wrong. Please try again.";
+        messageDiv.style.display = "block";
+      }
+    } catch (error) {
+      messageDiv.style.color = "red";
+      messageDiv.textContent = "Network error. Please try again later.";
+      messageDiv.style.display = "block";
+    }
+  });
+</script>
+
+<script>
+  // AI contact modal behavior
+  (function(){
+    const openBtn = document.getElementById('open-ai-contact');
+    const modal = document.getElementById('ai-contact-modal');
+    const closeBtn = document.getElementById('ai-contact-close');
+    const cancelBtn = document.getElementById('ai-contact-cancel');
+    const form = document.getElementById('ai-contact-form');
+    const message = document.getElementById('ai-contact-message');
+    const aiPhone = document.getElementById('ai-phone');
+    const aiEmail = document.getElementById('ai-email');
+
+    function show() { modal.style.display = 'flex'; }
+    function hide() { modal.style.display = 'none'; }
+
+    openBtn && openBtn.addEventListener('click', show);
+    closeBtn && closeBtn.addEventListener('click', hide);
+    cancelBtn && cancelBtn.addEventListener('click', hide);
+
+    // sanitize phone input: digits only, max 10
+    if (aiPhone) {
+      aiPhone.addEventListener('input', () => {
+        let v = aiPhone.value.replace(/\D/g, '');
+        if (v.length > 10) v = v.slice(0,10);
+        aiPhone.value = v;
+      });
+    }
+
+    // sanitize email input: remove whitespace characters as user types
+    if (aiEmail) {
+      aiEmail.addEventListener('input', () => {
+        aiEmail.value = aiEmail.value.replace(/\s/g, '');
+      });
+    }
+
+    // Close modal when clicking outside content
+    modal && modal.addEventListener('click', (e)=>{ if(e.target === modal) hide(); });
+
+    form && form.addEventListener('submit', async function(e){
+      e.preventDefault();
+      message.style.display = 'none';
+      const name = document.getElementById('ai-name').value.trim();
+      const email = (document.getElementById('ai-email').value || '').trim();
+      const phone = (document.getElementById('ai-phone').value || '').trim();
+      const desc = document.getElementById('ai-desc').value.trim();
+
+      // email regex (no spaces allowed)
+      const emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+
+      if(!name || !email || !desc){
+        message.style.color = 'red';
+        message.textContent = 'Please fill in required fields (name, email, description).';
+        message.style.display = 'block';
+        return;
+      }
+
+      if(!emailPattern.test(email)){
+        message.style.color = 'red';
+        message.textContent = 'Please enter a valid email address (no spaces).';
+        message.style.display = 'block';
+        return;
+      }
+
+      if(phone && phone.length !== 10){
+        message.style.color = 'red';
+        message.textContent = 'Phone number must be 10 digits.';
+        message.style.display = 'block';
+        return;
+      }
+
+      const formData = new FormData(form);
+      try{
+        const res = await fetch(form.action, { method: 'POST', body: formData, headers: { 'Accept':'application/json' } });
+        if(res.ok){
+          message.style.color = 'green';
+          message.textContent = 'Thank you — we will be in touch soon.';
+          message.style.display = 'block';
+          form.reset();
+          setTimeout(hide,1200);
+        } else {
+          message.style.color = 'red';
+          message.textContent = 'Submission failed — please try again.';
+          message.style.display = 'block';
+        }
+      }catch(err){
+        message.style.color = 'red';
+        message.textContent = 'Network error. Please try later.';
+        message.style.display = 'block';
+      }
+    });
+  })();
+</script>
+
+<script>
+  // Contact Box
+  const modal = document.getElementById('contact-modal');
+
+  // Show when footer is in view
+  window.addEventListener('scroll', function() {
+    const footer = document.querySelector('.footer-footer');
+    const rect = footer.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      modal.style.display = 'block';
+    }
+  });
+
+  // Check on load
+  const footer = document.querySelector('.footer-footer');
+  const rect = footer.getBoundingClientRect();
+  if (rect.top < window.innerHeight && rect.bottom > 0) {
+    modal.style.display = 'block';
+  }
+
+  // Contact Form Validation
+  const modalEmailInput = document.getElementById('modal-email');
+  const modalEmailError = document.getElementById('modal-email-error');
+  const modalPhoneInput = document.getElementById('modal-phone');
+  const modalPhoneError = document.getElementById('modal-phone-error');
+
+  modalEmailInput.addEventListener('blur', () => {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(modalEmailInput.value)) {
+      modalEmailError.style.display = 'inline';
+    } else {
+      modalEmailError.style.display = 'none';
+    }
+  });
+
+  modalPhoneInput.addEventListener('input', () => {
+    const phoneValue = modalPhoneInput.value.replace(/\D/g, '');
+    modalPhoneInput.value = phoneValue;
+    if (phoneValue.length > 10) {
+      modalPhoneInput.value = phoneValue.slice(0, 10);
+    }
+  });
+
+  modalPhoneInput.addEventListener('blur', () => {
+    if (modalPhoneInput.value.length !== 10) {
+      modalPhoneError.style.display = 'inline';
+    } else {
+      modalPhoneError.style.display = 'none';
+    }
+  });
+
+  // Contact Form Submission (using Formspree)
+  document.getElementById('contact-form').addEventListener('submit', function(e) {
+    // Validation before submit
+    let valid = true;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(modalEmailInput.value)) {
+      modalEmailError.style.display = 'inline';
+      valid = false;
+    }
+    if (modalPhoneInput.value.length !== 10) {
+      modalPhoneError.style.display = 'inline';
+      valid = false;
+    }
+    if (!valid) {
+      e.preventDefault();
+      return;
+    }
+    // Form will submit to Formspree
+    setTimeout(() => {
+      alert('Message sent successfully!');
+      document.getElementById('contact-form').reset();
+    }, 1000);
+  });
+</script>
+
+<script>
+  // Mobile menu toggle
+    (function(){
+    const openBtn = document.getElementById('mobile-menu-open');
+    const closeBtn = document.getElementById('mobile-menu-close');
+    const mobile = document.getElementById('mobile-menu');
+    if(!mobile) return;
+    function open(){ mobile.classList.add('open'); mobile.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+    function close(){ mobile.classList.remove('open'); mobile.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+    openBtn && openBtn.addEventListener('click', open);
+    closeBtn && closeBtn.addEventListener('click', close);
+    // close when clicking a link
+    mobile.querySelectorAll('a').forEach(a=> a.addEventListener('click', close));
+    // close on outside click
+    mobile.addEventListener('click', (e)=>{ if(e.target === mobile) close(); });
+    // close on Escape
+    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') close(); });
+  })();
+</script>
+
+  <!-- FOOTER -->
+  <footer class="footer-footer" id="contact">
+    <div class="footer-wrapper">
+
+      <div class="footer-information">
+
+        <div class="footer-content">
+          <div class="footer-header">
+            <div class="branding-branding">
+              <img src="./Img/Logo01.png" alt="Brand Logo" class="branding-image" />
+            </div>
+          </div>
+
+          <p class="footer-text1">
+            Founded in 2025, The Billing Tree is a tech-driven startup dedicated
+          to simplifying medical billing for clinics, hospitals, and specialty
+          practices. Our initiative is to streamline revenue cycles with
+          AI-powered precision and personalized support.
+          </p>
+
+          <div class="footer-contact-list">
+            <div class="footer-contact1">
+              <img src="public/group%201639.svg" class="footer-image1" />
+              <span class="footer-text2">pr@thebilling-tree.com</span>
+            </div>
+
+            <div class="footer-contact2">
+              <img src="public/group%201640.svg" class="footer-image2" />
+              <span class="footer-text3">+1 747-222-8894</span>
+            </div>
+          </div>
+
+          <span class="footer-copyright">
+            © 2025 The Billing Tree. All Rights Reserved.
+          </span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="modal">
+      <div class="modal-content">
+        <h2>Contact Us</h2>
+        <form id="contact-form" action="https://formspree.io/f/mvzpragr" method="POST">
+          <input type="text" name="name" placeholder="Name" required>
+          <input type="email" name="email" id="modal-email" placeholder="Email" required>
+          <span id="modal-email-error" style="color:red; display:none;">Please enter a valid email address.</span>
+          <input type="tel" name="phone" id="modal-phone" pattern="\d{10}" maxlength="10" placeholder="Phone (10 digits)" required>
+          <span id="modal-phone-error" style="color:red; display:none;">Please enter a valid 10-digit phone number.</span>
+          <textarea name="describe" placeholder="Describe your needs" required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+        <div id="contact-message"></div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<!-- Hover Filter -->
+<style>
+  .partner-container:hover .partner-image {
+    filter: invert(100%) brightness(101%) contrast(102%);
+  }
+</style>
+
+<!-- Lightweight hero parallax/tilt script -->
+<script>
+(function() {
+  const hero = document.querySelector('.home-hero');
+  const image = document.querySelector('.home-image3');
+  if (!hero || !image) return;
+
+  let rafId = null;
+  let mouseX = 0, mouseY = 0;
+
+  function updateTransform() {
+    const rect = hero.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    const deltaX = (mouseX - centerX) / rect.width;
+    const deltaY = (mouseY - centerY) / rect.height;
+
+    // Subtle parallax (translate) + tilt (rotate)
+    const translateX = deltaX * 12; // px
+    const translateY = deltaY * 8; // px
+    const rotateX = deltaY * -4; // deg
+    const rotateY = deltaX * 4; // deg
+
+    image.style.transform = `translate(${translateX}px, ${translateY}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    rafId = null;
+  }
+
+  function onMouseMove(e) {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    if (!rafId) rafId = requestAnimationFrame(updateTransform);
+  }
+
+  function onMouseLeave() {
+    mouseX = 0; mouseY = 0;
+    if (!rafId) rafId = requestAnimationFrame(updateTransform);
+  }
+
+  // Respect reduced motion
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  hero.addEventListener('mousemove', onMouseMove);
+  hero.addEventListener('mouseleave', onMouseLeave);
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book a Call - The Billing Tree</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/animate.css@4.1.1/animate.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" />
+  <link rel="stylesheet" href="./index.css" />
+  <style>
+    body {
+      font-family: 'Lora', serif;
+      background-color: var(--dl-color-gray-white, #fff);
+      color: var(--dl-color-gray-black, #111);
+      margin: 0;
+      padding: 0;
+    }
+
+    .book-call-section {
+      max-width: 700px;
+      margin: 80px auto;
+      padding: 20px;
+      background: #f9f9f9;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .book-call-section h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .book-call-section p {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #555;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    label {
+      display: flex;
+      flex-direction: column;
+      font-weight: 500;
+      color: #333;
+    }
+
+    input, select, textarea {
+      margin-top: 5px;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    button[type="submit"] {
+      background-color: #2e7d32; /* Green tone like your site */
+      color: #fff;
+      padding: 12px 20px;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #1b5e20;
+    }
+
+    @media (max-width: 768px) {
+      .book-call-section {
+        margin: 40px 20px;
+        padding: 15px;
+      }
+    }
+    /* Creative demo panel styles */
+    .demo-panel {
+      max-width: 900px;
+      margin: 28px auto 60px;
+      background: linear-gradient(180deg,#FFFFFF,#F7FFF6);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 12px 36px rgba(11,22,33,0.06);
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 18px;
+      align-items: center;
+    }
+    .demo-panel h2 { margin:0 0 8px 0; font-family: Lora, serif; font-size: 24px; color: #122821; }
+    .demo-panel p { margin:0 0 12px 0; color: rgba(18,40,33,0.85); }
+    .demo-features { display:flex; gap:10px; flex-wrap:wrap; list-style:none; padding:0; margin:0; }
+    .demo-features li { background: rgba(18,40,33,0.04); padding:8px 10px; border-radius:8px; font-size:14px; }
+    .demo-panel-preview { width:100%; height:140px; border-radius:10px; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg,#E6F9E0,#FFFFFF); color:rgba(18,40,33,0.6); font-weight:700; }
+    .demo-cta { margin-top:12px; }
+    .demo-cta a.button { background: linear-gradient(90deg,#0f6a56,#0b5a49); color:#fff; padding:10px 16px; border-radius:8px; text-decoration:none; display:inline-block; }
+    @media (max-width:780px){ .demo-panel { grid-template-columns: 1fr; } .demo-panel-preview{ height:160px; } }
+  </style>
+</head>
+<body>
+<div class="home-container1">
+  <header class="home-header1">
+    <div class="home-navbar-interactive">
+      <div class="home-branding1">
+        <svg viewBox="0 0 1024 1024" class="home-icon10"><path d="M128 128h768v768h-768z"></path></svg>
+        <a href="index.html" class="home-text10">The Billing Tree</a>
+      </div>
+      <!-- mobile hamburger (visible via CSS at small widths) -->
+      <button class="home-burger-menu" id="mobile-menu-open" aria-label="Open menu">
+        <svg width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg"><rect y="0" width="20" height="2" rx="1" fill="#122821"/><rect y="6" width="20" height="2" rx="1" fill="#122821"/><rect y="12" width="20" height="2" rx="1" fill="#122821"/></svg>
+      </button>
+
+      <nav class="home-desktop-menu">
+        <div class="home-links1">
+          <a href="index.html" class="home-button1 button">Home</a>
+          <a href="index.html#about" class="home-button1 button">About Us</a>
+          <div class="dropdown">
+            <button class="home-button1 button dropbtn">Services</button>
+            <div class="dropdown-content">
+              <a href="frontend.html">Front End</a>
+              <a href="midcycle.html">Mid Cycle</a>
+              <a href="backend.html">Back End</a>
+            </div>
+          </div>
+          <a href="index.html#contact" class="home-button1 button">Contact</a>
+          <a href="index.html#ai-consulting" class="home-button1 button">AI Consulting</a>
+          <a href="quote.html" class="home-button2 button">Get a fast quote</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile menu (slides in) -->
+  <div class="home-mobile-menu" id="mobile-menu" aria-hidden="true">
+    <div class="home-top">
+      <div class="home-branding2">
+        <a href="index.html" class="home-text13">The Billing Tree</a>
+      </div>
+      <div class="home-menu-close">
+        <button id="mobile-menu-close" aria-label="Close menu">✕</button>
+      </div>
+    </div>
+    <nav class="mobile-links">
+      <a href="index.html" class="home-button1 button">Home</a>
+      <a href="index.html#about" class="home-button1 button">About Us</a>
+      <div class="dropdown">
+        <button class="home-button1 button dropbtn">Services</button>
+        <div class="dropdown-content">
+          <a href="frontend.html">Front End</a>
+          <a href="midcycle.html">Mid Cycle</a>
+          <a href="backend.html">Back End</a>
+        </div>
+      </div>
+      <a href="index.html#contact" class="home-button1 button">Contact</a>
+      <a href="index.html#ai-consulting" class="home-button1 button">AI Consulting</a>
+      <a href="quote.html" class="home-button2 button">Get a fast quote</a>
+    </nav>
+  </div>
+
+  <section class="book-call-section">
+    <h1>Book a Call with The Billing Tree</h1>
+    <p>Fill out the form below and we'll reach out to schedule a call.</p>
+
+    <form id="book-call-form" action="https://formspree.io/f/movbgdal" method="POST">
+      <label>
+        Name:
+        <input type="text" name="name" required />
+      </label>
+
+      <label>
+        Practice Name:
+        <input type="text" name="practice_name" required />
+      </label>
+
+     <label>
+  Email:
+<input
+  type="email"
+  name="email"
+  id="email"
+  placeholder="example@domain.com"
+  required
+/>
+     </label>
+      
+
+     <label>
+  Phone:
+<input
+  type="tel"
+  name="phone"
+  id="phone"
+  pattern="\d{10}"
+  maxlength="10"
+  placeholder="1234567890"
+  required
+/>
+     </label>
+      
+
+
+      <label>
+        Specialty:
+        <input type="text" name="specialty" />
+      </label>
+
+      <label>
+        Services Needed:
+        <input type="text" name="services_needed" />
+      </label>
+
+      <label>
+        Preferred Contact Method:
+        <select name="contact_method">
+          <option value="phone">Phone</option>
+          <option value="email">Email</option>
+        </select>
+      </label>
+
+      <label>
+        Notes:
+        <textarea name="notes"></textarea>
+      </label>
+
+      <button type="submit">Submit</button>
+      <div id="bookCallMessage" style="margin-top:10px;display:none;text-align:center;"></div>
+    </form>
+
+    <script>
+      (function(){
+        const form = document.getElementById('book-call-form');
+        const email = form.querySelector('input[name="email"]');
+        const phone = form.querySelector('input[name="phone"]');
+        const msg = document.getElementById('bookCallMessage');
+
+        function show(text, color){ msg.style.display='block'; msg.style.color = color; msg.textContent = text; }
+        // sanitize phone input as user types
+        phone.addEventListener('input', () => { phone.value = phone.value.replace(/\D/g,'').slice(0,10); });
+
+        form.addEventListener('submit', async function(e){
+          e.preventDefault();
+          msg.style.display = 'none';
+          const emailVal = (email.value||'').trim();
+          const phoneVal = (phone.value||'').replace(/\D/g,'').slice(0,10);
+          const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+          if(!emailPattern.test(emailVal)){
+            show('Please enter a valid email address.','red');
+            return;
+          }
+          if(phoneVal.length !== 10){
+            show('Please enter a valid 10-digit phone number.','red');
+            return;
+          }
+
+          // ensure cleaned phone is set
+          phone.value = phoneVal;
+
+          const formData = new FormData(form);
+          try{
+            const res = await fetch(form.action, { method: 'POST', body: formData, headers: { 'Accept':'application/json' } });
+            if(res.ok){
+              show('Thanks — we will contact you shortly.','green');
+              form.reset();
+            } else {
+              show('Submission failed — please try again.','red');
+            }
+          } catch(err){
+            show('Network error — please try later.','red');
+          }
+        });
+      })();
+    </script>
+
+    <script>
+      // Mobile menu toggle (same behavior as index.html)
+      (function(){
+        const openBtn = document.getElementById('mobile-menu-open');
+        const closeBtn = document.getElementById('mobile-menu-close');
+        const mobile = document.getElementById('mobile-menu');
+        if(!mobile) return;
+        function open(){ mobile.classList.add('open'); mobile.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+        function close(){ mobile.classList.remove('open'); mobile.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+        openBtn && openBtn.addEventListener('click', open);
+        closeBtn && closeBtn.addEventListener('click', close);
+        mobile.querySelectorAll('a').forEach(a=> a.addEventListener('click', close));
+        mobile.addEventListener('click', (e)=>{ if(e.target === mobile) close(); });
+        document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') close(); });
+      })();
+    </script>
+    </section>
+
+    </div>
+  </body>
+  </html>
+
+

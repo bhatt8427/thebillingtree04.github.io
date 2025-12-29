@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Back-End Services | The Billing Tree</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap">
+
+    <!-- FAVICONS -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+    <!-- Reset CSS -->
+    <style>
+        html { line-height: 1.15; scroll-behavior: smooth; }
+        body { margin: 0; }
+        * { box-sizing: border-box; border-width: 0; border-style: solid; -webkit-font-smoothing: antialiased; }
+        p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption { margin: 0; padding: 0; }
+        img { display: block; }
+        button,input { font-family: inherit; }
+    </style>
+
+    <!-- Default Styles -->
+    <style>
+        html { font-family: Lora; font-size: 16px; }
+        body {
+            font-weight: 400;
+            color: #000;
+            background: #fff;
+            line-height: 1.15;
+        }
+    </style>
+
+    <!-- External Fonts & Scripts -->
+    <link rel="stylesheet" href="https://unpkg.com/animate.css@4.1.1/animate.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./index.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #fff;
+            min-height: 100vh;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .animated-bg::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 100px 20px 80px;
+            color: white;
+            position: relative;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            margin-top: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: linear-gradient(45deg, #38ef7d, #11998e);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(56, 239, 125, 0.3);
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(56, 239, 125, 0.4);
+        }
+
+        /* Services Section */
+        .services-section {
+            background: white;
+            padding: 100px 20px;
+            border-radius: 30px 30px 0 0;
+            margin-top: -30px;
+            position: relative;
+            box-shadow: 0 -10px 40px rgba(0,0,0,0.1);
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 80px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .services-header h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .services-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #11998e, #38ef7d);
+            border-radius: 2px;
+        }
+
+        .services-header p {
+            font-size: 1.2rem;
+            color: #718096;
+            line-height: 1.6;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #11998e, #38ef7d);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(45deg, #11998e, #38ef7d);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            color: white;
+            font-size: 1.8rem;
+            box-shadow: 0 8px 20px rgba(17, 153, 142, 0.3);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            font-size: 1rem;
+            color: #718096;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .features-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+            font-size: 0.95rem;
+            color: #4a5568;
+        }
+
+        .features-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #48bb78;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            padding: 80px 20px;
+            color: white;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: #f8fafc;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: 2.5rem;
+            color: #2d3748;
+            margin-bottom: 20px;
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            color: #718096;
+            margin-bottom: 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn-primary {
+            background: linear-gradient(45deg, #11998e, #38ef7d);
+            color: white;
+            box-shadow: 0 8px 25px rgba(17, 153, 142, 0.3);
+        }
+
+        .cta-btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(17, 153, 142, 0.4);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .services-header h2 {
+                font-size: 2.2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .service-card {
+                padding: 30px 20px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-btn {
+                width: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 80px 20px 60px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.3s ease-out;
+            overflow: hidden;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            background: linear-gradient(45deg, #11998e, #38ef7d);
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .close {
+            color: white;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .close:hover {
+            opacity: 0.7;
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .modal-body p {
+            color: #718096;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            color: #2d3748;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #11998e;
+            box-shadow: 0 0 0 3px rgba(17, 153, 142, 0.1);
+        }
+
+        .phone-input-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .country-code {
+            padding: 12px 8px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            background: white;
+            min-width: 100px;
+            transition: border-color 0.3s ease;
+        }
+
+        .phone-input-group input {
+            flex: 1;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #11998e, #38ef7d);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(17, 153, 142, 0.3);
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(17, 153, 142, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Modal Responsive */
+        @media (max-width: 768px) {
+            .modal-content {
+                margin: 10% auto;
+                width: 95%;
+            }
+
+            .modal-header {
+                padding: 15px 20px;
+            }
+
+            .modal-body {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="home-container1">
+
+  <!-- NAVBAR -->
+  <header class="home-header1">
+    <div class="home-navbar-interactive">
+
+      <div class="home-branding1">
+        <svg viewBox="0 0 1024 1024" class="home-icon10">
+          <path d="M128 128h768v768h-768z"></path>
+        </svg>
+        <a href="index.html" class="home-text10">The Billing Tree</a>
+      </div>
+
+      <button class="home-mobile-quote button">Get a fast quote</button>
+
+            <!-- mobile hamburger (visible via CSS at small widths) -->
+            <button class="home-burger-menu" id="mobile-menu-open" aria-label="Open menu">
+                <svg width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg"><rect y="0" width="20" height="2" rx="1" fill="#122821"/><rect y="6" width="20" height="2" rx="1" fill="#122821"/><rect y="12" width="20" height="2" rx="1" fill="#122821"/></svg>
+            </button>
+
+            <nav class="home-desktop-menu">
+        <div class="home-links1">
+          <a href="index.html" class="home-button1 button">Home</a>
+          <a href="index.html#about" class="home-button1 button">About Us</a>
+          <div class="dropdown">
+            <button class="home-button1 button dropbtn">Services</button>
+            <div class="dropdown-content">
+              <a href="frontend.html">Front End</a>
+              <a href="midcycle.html">Mid Cycle</a>
+              <a href="backend.html">Back End</a>
+            </div>
+          </div>
+          <a href="quote.html" class="home-button1 button">Get a fast quote</a>
+          <a href="index.html#contact" class="home-button1 button">Contact</a>
+          <a href="index.html#ai-consulting" class="home-button1 button">AI Consulting</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+    <!-- Mobile menu (slides in) -->
+    <div class="home-mobile-menu" id="mobile-menu" aria-hidden="true">
+        <div class="home-top">
+            <div class="home-branding2">
+                <a href="index.html" class="home-text13">The Billing Tree</a>
+            </div>
+            <div class="home-menu-close">
+                <button id="mobile-menu-close" aria-label="Close menu">✕</button>
+            </div>
+        </div>
+        <nav class="mobile-links">
+            <a href="index.html" class="home-button1 button">Home</a>
+            <a href="index.html#about" class="home-button1 button">About Us</a>
+            <div class="dropdown">
+                <button class="home-button1 button dropbtn">Services</button>
+                <div class="dropdown-content">
+                    <a href="frontend.html">Front End</a>
+                    <a href="midcycle.html">Mid Cycle</a>
+                    <a href="backend.html">Back End</a>
+                </div>
+            </div>
+            <a href="index.html#contact" class="home-button1 button">Contact</a>
+            <a href="index.html#ai-consulting" class="home-button1 button">AI Consulting</a>
+            <a href="quote.html" class="home-button2 button">Get a fast quote</a>
+            <a href="book-call.html" class="home-button1 button">Book a Call</a>
+        </nav>
+    </div>
+
+    <div class="animated-bg"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Back-End Excellence</h1>
+            <p>
+                Maximize your revenue cycle performance with our comprehensive back-end solutions.
+                From advanced billing systems to denial management, we ensure every claim is
+                processed efficiently and every dollar is collected.
+            </p>
+            <a href="#services" class="hero-cta">Explore Our Services</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+        <div class="services-header">
+            <h2>Complete Back-End Solutions</h2>
+            <p>
+                Our back-end expertise accelerates reimbursements, reduces denials,
+                and provides complete visibility into your revenue performance.
+            </p>
+        </div>
+
+        <div class="services-grid">
+            <!-- Advanced Billing System -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-server"></i>
+                </div>
+                <h3>Advanced Billing System</h3>
+                <p>
+                    We utilize advanced billing workflows and technology to ensure
+                    accurate, compliant, and timely claim submission.
+                </p>
+                <ul class="features-list">
+                    <li>Clean claim creation and submission</li>
+                    <li>Integration with major EHR and PM systems</li>
+                    <li>Payer-specific billing rules and edits</li>
+                    <li>Compliance with CMS and payer guidelines</li>
+                    <li>Reduced claim rejections and delays</li>
+                </ul>
+            </div>
+
+            <!-- Accelerated Payment Posting -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-credit-card"></i>
+                </div>
+                <h3>Accelerated Payment Posting</h3>
+                <p>
+                    Fast and accurate payment posting ensures balances are updated
+                    correctly and revenue is recognized without delay.
+                </p>
+                <ul class="features-list">
+                    <li>ERA and EOB payment posting</li>
+                    <li>Daily reconciliation of payments</li>
+                    <li>Patient and insurance balance accuracy</li>
+                    <li>Identification of underpayments</li>
+                    <li>Improved cash flow visibility</li>
+                </ul>
+            </div>
+
+            <!-- Denial Management -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Denial Management</h3>
+                <p>
+                    Our denial specialists identify root causes and appeal claims
+                    aggressively to recover lost revenue.
+                </p>
+                <ul class="features-list">
+                    <li>Denial analysis and categorization</li>
+                    <li>Timely appeals and follow-ups</li>
+                    <li>Root-cause correction to prevent recurrence</li>
+                    <li>Payer-specific denial resolution strategies</li>
+                    <li>Improved first-pass acceptance rates</li>
+                </ul>
+            </div>
+
+            <!-- Reporting & Analytics -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Reporting & Analytics</h3>
+                <p>
+                    Actionable reporting gives you full transparency and data-driven
+                    insights into your revenue cycle performance.
+                </p>
+                <ul class="features-list">
+                    <li>Customized financial and operational reports</li>
+                    <li>AR aging and denial trend analysis</li>
+                    <li>Provider and location performance insights</li>
+                    <li>Monthly and quarterly revenue reviews</li>
+                    <li>Strategic recommendations for optimization</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <span class="stat-number">98%</span>
+                <span class="stat-label">First-Pass Claim Acceptance</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">24hrs</span>
+                <span class="stat-label">Average Payment Posting Time</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">75%</span>
+                <span class="stat-label">Denial Recovery Rate</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">99.9%</span>
+                <span class="stat-label">Payment Posting Accuracy</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Optimize Your Back-End Operations?</h2>
+            <p>
+                Join leading healthcare providers who trust The Billing Tree
+                for their back-end billing and revenue cycle management needs.
+            </p>
+            <div class="cta-buttons">
+                <button onclick="openModal()" class="cta-btn cta-btn-primary">Get Started Today</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Dialog -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Get Started Today</h3>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>Ready to optimize your back-end operations? Fill out the form below and we'll get back to you within 24 hours.</p>
+                <form action="https://formspree.io/f/mvzpragr" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <div class="phone-input-group">
+                            <select id="country-code" name="country_code" class="country-code">
+                                <option value="+1">+1 (US)</option>
+                                <option value="+44">+44 (UK)</option>
+                                <option value="+91">+91 (India)</option>
+                                <option value="+86">+86 (China)</option>
+                                <option value="+81">+81 (Japan)</option>
+                                <option value="+49">+49 (Germany)</option>
+                                <option value="+33">+33 (France)</option>
+                                <option value="+39">+39 (Italy)</option>
+                                <option value="+34">+34 (Spain)</option>
+                                <option value="+55">+55 (Brazil)</option>
+                                <option value="+61">+61 (Australia)</option>
+                                <option value="+7">+7 (Russia)</option>
+                                <option value="+82">+82 (South Korea)</option>
+                                <option value="+52">+52 (Mexico)</option>
+                                <option value="+27">+27 (South Africa)</option>
+                            </select>
+                            <input type="tel" id="phone" name="phone" maxlength="10" placeholder="1234567890" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" maxlength="254" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message (Optional)</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Tell us about your specific needs..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+<script>
+    // Mobile menu toggle (same behavior as index.html)
+    (function(){
+        const openBtn = document.getElementById('mobile-menu-open');
+        const closeBtn = document.getElementById('mobile-menu-close');
+        const mobile = document.getElementById('mobile-menu');
+        if(!mobile) return;
+        function open(){ mobile.classList.add('open'); mobile.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+        function close(){ mobile.classList.remove('open'); mobile.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+        openBtn && openBtn.addEventListener('click', open);
+        closeBtn && closeBtn.addEventListener('click', close);
+        mobile.querySelectorAll('a').forEach(a=> a.addEventListener('click', close));
+        mobile.addEventListener('click', (e)=>{ if(e.target === mobile) close(); });
+        document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') close(); });
+    })();
+</script>
+
+</div>
+
+<script>
+// Modal functionality
+function openModal() {
+    document.getElementById('contactModal').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    document.getElementById('contactModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// Close modal when clicking outside
+window.onclick = function(event) {
+    const modal = document.getElementById('contactModal');
+    if (event.target == modal) {
+        closeModal();
+    }
+}
+
+// Close modal on escape key
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeModal();
+    }
+});
+</script>
+</body>
+</html>
