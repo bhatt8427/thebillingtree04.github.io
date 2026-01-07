@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RCM Training | The Billing Tree</title>
+  <!-- External Fonts & Scripts -->
+  <link rel="stylesheet" href="https://unpkg.com/animate.css@4.1.1/animate.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./index.css">
+
+  <style>
+    :root {
+      --accent1: #06b6d4;
+      --accent2: #2dd4bf;
+      --forest: #063a2f;
+    }
+
+    /* RESET */
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Lato', sans-serif;
+      background: linear-gradient(180deg, #f6fffe, #eefdfc);
+      color: #072f26;
+    }
+
+    /* ================= HEADER ================= */
+
+
+
+
+    .home-desktop-menu {
+      display: flex
+    }
+
+    .home-links1 {
+      display: flex;
+      gap: 14px;
+      align-items: center
+    }
+
+    .home-button2 {
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-weight: 700;
+      color: #033;
+      text-decoration: none
+    }
+
+    /* Desktop dropdown */
+    .dropdown {
+      position: relative
+    }
+
+    .dropdown-content {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #fff;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, .1);
+      display: none
+    }
+
+    .dropdown.open .dropdown-content {
+      display: block
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block
+    }
+
+
+
+    /* ================= MOBILE MENU ================= */
+    /* Handled by index.css */
+
+    .mobile-links {
+      display: flex;
+      flex-direction: column;
+      gap: 14px
+    }
+
+    /* Accordion */
+    .accordion-btn {
+      background: none;
+      border: none;
+      font-weight: 700;
+      text-align: left;
+      padding: 10px;
+      font-size: 1rem;
+      cursor: pointer
+    }
+
+    .accordion-panel {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .4s ease;
+      padding-left: 14px
+    }
+
+    .accordion-panel a {
+      display: block;
+      padding: 8px 0;
+      text-decoration: none;
+      color: #055
+    }
+
+    /* ================= LAYOUT ================= */
+    section {
+      padding: 90px 0
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: auto;
+      padding: 24px
+    }
+
+    /* Reveal animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: .8s ease
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: none
+    }
+
+    /* ================= HERO ================= */
+    .hero {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      padding: 60px;
+      background: linear-gradient(135deg, rgba(6, 182, 212, .16), rgba(45, 212, 191, .14));
+      border-radius: 26px;
+      box-shadow: 0 24px 60px rgba(6, 182, 212, .14)
+    }
+
+    .hero h1 {
+      font-size: 2.7rem;
+      margin: 0
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      margin-top: 18px
+    }
+
+    .logo-bubble {
+      width: 220px;
+      height: 220px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, var(--accent1), var(--accent2));
+      color: #fff;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      animation: float 6s ease-in-out infinite
+    }
+
+    @keyframes float {
+      50% {
+        transform: translateY(-12px)
+      }
+    }
+
+    @media(max-width:900px) {
+      .hero {
+        flex-direction: column
+      }
+    }
+
+    /* ================= CARDS ================= */
+    h2 {
+      text-align: center;
+      color: var(--forest);
+      font-size: 2.2rem
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 26px
+    }
+
+    .training-card {
+      background: #fff;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 14px 34px rgba(6, 182, 212, .1);
+      transition: .35s
+    }
+
+    .training-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 48px rgba(6, 182, 212, .22)
+    }
+
+    /* ================= SYLLABUS ================= */
+    .syllabus-box {
+      max-width: 820px;
+      margin: auto;
+      text-align: center;
+      padding: 46px;
+      background: #fff;
+      border-radius: 22px;
+      box-shadow: 0 18px 42px rgba(6, 182, 212, .15)
+    }
+
+    .download-btn {
+      display: inline-block;
+      margin-top: 26px;
+      padding: 16px 34px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      color: #fff;
+      font-weight: 800;
+      text-decoration: none
+    }
+
+    /* ================= CTA ================= */
+    .cta {
+      text-align: center
+    }
+
+    .cta-btn {
+      padding: 18px 44px;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      font-weight: 900;
+      cursor: pointer
+    }
+
+    /* ================= POPUP ================= */
+    .popup-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .45);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999
+    }
+
+    .popup-box {
+      background: #fff;
+      padding: 36px;
+      width: 100%;
+      max-width: 420px;
+      border-radius: 22px
+    }
+
+    .popup-box input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid #ccc
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 14px;
+      right: 18px;
+      cursor: pointer;
+      font-size: 22px
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="home-header1">
+    <div class="home-navbar-interactive">
+
+      <div class="home-branding1">
+        <svg viewBox="0 0 1024 1024" class="home-icon10">
+          <path d="M128 128h768v768h-768z"></path>
+        </svg>
+        <a href="index.html" class="home-text10">The Billing Tree</a>
+      </div>
+
+      <nav class="home-desktop-menu">
+        <div class="home-links1">
+          <a href="index.html" class="home-button1 button">Home</a>
+          <div class="dropdown">
+            <button class="home-button1 button dropbtn">Services</button>
+            <div class="dropdown-content">
+              <a href="frontend.html">Front End</a>
+              <a href="midcycle.html">Mid Cycle</a>
+              <a href="backend.html">Back End</a>
+              <a href="RCM traning.html">RCM Traning</a>
+            </div>
+          </div>
+          <a href="index.html#contact" class="home-button1 button">Contact</a>
+          <a href="index.html#ai-consulting" class="home-button1 button">AI Consulting</a>
+          <a href="quote.html" class="home-button2 button">Get a fast quote</a>
+        </div>
+      </nav>
+      <!-- mobile hamburger (visible via CSS at small widths) -->
+      <button class="home-burger-menu" id="mobile-menu-open" aria-label="Open menu" onclick="openMobileMenu()">
+        <svg width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect y="0" width="20" height="2" rx="1" fill="#122821" />
+          <rect y="6" width="20" height="2" rx="1" fill="#122821" />
+          <rect y="12" width="20" height="2" rx="1" fill="#122821" />
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <!-- Mobile menu (slides in) -->
+  <div class="home-mobile-menu" id="mobile-menu" aria-hidden="true">
+    <div class="home-top">
+      <div class="home-branding2">
+        <a href="index.html" class="home-text13">The Billing Tree</a>
+      </div>
+      <div class="home-menu-close">
+        <button id="mobile-menu-close" aria-label="Close menu" onclick="closeMobileMenu()">✕</button>
+      </div>
+    </div>
+    <nav class="mobile-links">
+      <a href="index.html" class="home-button1 button">Home</a>
+      <div class="dropdown">
+        <button class="home-button1 button dropbtn">Services</button>
+        <div class="dropdown-content">
+          <a href="frontend.html">Front End</a>
+          <a href="midcycle.html">Mid Cycle</a>
+          <a href="backend.html">Back End</a>
+          <a href="RCM traning.html">RCM Traning</a>
+        </div>
+      </div>
+      <a href="index.html#contact" class="home-button1 button">Contact</a>
+      <a href="index.html#ai-consulting" class="home-button1 button">AI Consulting</a>
+      <a href="quote.html" class="home-button2 button">Get a fast quote</a>
+      <a href="book-call.html" class="home-button1 button">Book a Call</a>
+    </nav>
+  </div>
+
+  <!-- HERO -->
+  <section class="container">
+    <div class="hero reveal">
+      <div>
+        <h1>RCM Training Program</h1>
+        <p>Industry-ready Revenue Cycle Management training designed for real healthcare workflows.</p>
+      </div>
+      <div class="logo-bubble">RCM<br>Training</div>
+    </div>
+  </section>
+
+  <!-- TRAINING AREAS -->
+  <section class="container">
+    <h2 class="reveal">Training Areas Covered</h2>
+    <div class="grid">
+      <div class="training-card reveal">
+        <h3>Front-End Operations</h3>
+        <p>Patient scheduling, eligibility checks, authorizations.</p>
+      </div>
+      <div class="training-card reveal">
+        <h3>Mid-Cycle Workflow</h3>
+        <p>Pre-charting, medical scribing, coding accuracy.</p>
+      </div>
+      <div class="training-card reveal">
+        <h3>Back-End Billing</h3>
+        <p>Claims submission, AR follow-ups, denials.</p>
+      </div>
+      <div class="training-card reveal">
+        <h3>Compliance</h3>
+        <p>HIPAA, audits, payer-specific rules.</p>
+      </div>
+      <div class="training-card reveal">
+        <h3>Analytics</h3>
+        <p>KPIs, dashboards, revenue insights.</p>
+      </div>
+      <div class="training-card reveal">
+        <h3>Real Scenarios</h3>
+        <p>Hands-on billing case studies.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SYLLABUS -->
+  <section class="container">
+    <h2 class="reveal">Course Syllabus</h2>
+    <div class="syllabus-box reveal">
+      <p>Structured, real-world RCM learning path.</p>
+      <a class="download-btn" href="https://drive.google.com/file/d/1PQBgtqRK6d8E369kJNRW0V0Pp47z0osm/view"
+        target="_blank">
+        View & Download Syllabus (PDF)
+      </a>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2 class="reveal">Start Your RCM Career Today</h2>
+    <button class="cta-btn reveal" onclick="openPopup()">Enroll Now</button>
+  </section>
+
+  <!-- POPUP -->
+  <div class="popup-overlay" id="popup">
+    <div class="popup-box">
+      <span class="close-btn" onclick="closePopup()">×</span>
+      <h3>Enroll in RCM Training</h3>
+      <form action="https://formspree.io/f/movbgdal" method="POST">
+        <input type="text" id="name" name="name" placeholder="Full Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="tel" id="phone" name="phone" placeholder="10-digit Phone" required>
+        <button class="cta-btn" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+
+  <script>
+    /* Reveal Animation Logic */
+    const obs = new IntersectionObserver(e => {
+      e.forEach(x => x.isIntersecting && x.target.classList.add('show'))
+    }, { threshold: .15 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    /* Validation & Form Logic */
+    (function () {
+      const nameInput = document.getElementById('name');
+      const phoneInput = document.getElementById('phone');
+      const popup = document.getElementById('popup');
+
+      if (nameInput) {
+        nameInput.addEventListener('input', e => e.target.value = e.target.value.replace(/[^a-zA-Z\s]/g, ''));
+      }
+      if (phoneInput) {
+        phoneInput.addEventListener('input', e => e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10));
+      }
+
+      window.openPopup = function () { if (popup) popup.style.display = 'flex'; };
+      window.closePopup = function () { if (popup) popup.style.display = 'none'; };
+    })();
+
+    /* Mobile Menu Implementation */
+    (function () {
+      const menu = document.getElementById('mobile-menu');
+      if (!menu) return;
+
+      window.openMobileMenu = function () {
+        menu.classList.add('open');
+        menu.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      };
+
+      window.closeMobileMenu = function () {
+        menu.classList.remove('open');
+        menu.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      };
+
+      // Handle dropdown toggle in mobile
+      const dropdown = menu.querySelector('.dropdown');
+      const dropbtn = dropdown ? dropdown.querySelector('.dropbtn') : null;
+      if (dropbtn) {
+        dropbtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          dropdown.classList.toggle('open');
+        });
+      }
+
+      // Close menu on link click (but NOT the dropdown button) or outside click
+      menu.addEventListener('click', (e) => {
+        if (e.target === menu) {
+          closeMobileMenu();
+        } else if (e.target.tagName === 'A' && !e.target.classList.contains('dropbtn')) {
+          closeMobileMenu();
+        }
+      });
+
+      // Escape key to close
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMobileMenu();
+      });
+    })();
+  </script>
+
+</body>
+
+</html>
