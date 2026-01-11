@@ -81,6 +81,27 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* Critical Header & Mobile Menu Styles */
+    .home-header1 {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 60;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.85));
+      backdrop-filter: blur(6px);
+    }
+
+    @media (max-width: 991px) {
+      #mobile-menu-open {
+        display: block !important;
+      }
+
+      .home-container1 {
+        padding-top: 48px;
+      }
+    }
   </style>
 </head>
 
@@ -97,7 +118,7 @@
 
         <nav class="home-desktop-menu">
           <div class="home-links1">
-            <a href="index.html" class="home-button1 button">Home</a>
+            <a href="index.html#about" class="home-button1 button">About Us</a>
             <div class="dropdown">
               <button class="home-button1 button dropbtn">Services</button>
               <div class="dropdown-content">
@@ -135,7 +156,7 @@
         </div>
       </div>
       <nav class="mobile-links">
-        <a href="index.html" class="home-button1 button">Home</a>
+        <a href="index.html#about" class="home-button1 button">About Us</a>
         <div class="dropdown">
           <button class="home-button1 button dropbtn">Services</button>
           <div class="dropdown-content">

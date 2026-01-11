@@ -59,8 +59,13 @@
   display: contents;
 }
 
-.card-card {
+.card-card,
+.card-card1,
+.card-card2,
+.card-card3 {
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .card-header {
@@ -94,9 +99,6 @@
   display: contents;
 }
 
-.card-card1 {
-  position: relative;
-}
 
 .card-header1 {
   gap: var(--dl-layout-space-oneandhalfunits);
@@ -129,9 +131,6 @@
   display: contents;
 }
 
-.card-card2 {
-  position: relative;
-}
 
 .card-header2 {
   gap: var(--dl-layout-space-oneandhalfunits);
@@ -164,9 +163,6 @@
   display: contents;
 }
 
-.card-card3 {
-  position: relative;
-}
 
 .card-header3 {
   gap: var(--dl-layout-space-oneandhalfunits);
@@ -402,13 +398,16 @@
 /* Creative "Learn more" button styles for service cards */
 .card-footer,
 .card-footer1,
-.card-footer2 {
-  margin-top: 14px;
+.card-footer2,
+.card-footer3 {
+  margin-top: auto;
+  padding-top: 14px;
 }
 
 .card-cta,
 .card-cta1,
-.card-cta2 {
+.card-cta2,
+.card-cta3 {
   display: inline-block;
   padding: 10px 20px;
   border-radius: 999px;
@@ -424,7 +423,9 @@
 
 .card-cta::before,
 .card-cta1::before,
-.card-cta2::before {
+.card-cta2::before,
+.card-cta3::before {
+  display: none;
   content: '→';
   position: absolute;
   right: 16px;
@@ -437,7 +438,8 @@
 
 .card-cta::after,
 .card-cta1::after,
-.card-cta2::after {
+.card-cta2::after,
+.card-cta3::after {
   content: '';
   position: absolute;
   width: 120px;
@@ -452,21 +454,24 @@
 
 .card-cta:hover,
 .card-cta1:hover,
-.card-cta2:hover {
+.card-cta2:hover,
+.card-cta3:hover {
   transform: translateY(-5px);
   box-shadow: 0 14px 36px rgba(3, 105, 161, 0.16);
 }
 
 .card-cta:hover::before,
 .card-cta1:hover::before,
-.card-cta2:hover::before {
+.card-cta2:hover::before,
+.card-cta3:hover::before {
   right: 12px;
   transform: translateY(-50%) scale(1.05);
 }
 
 .card-cta:hover::after,
 .card-cta1:hover::after,
-.card-cta2:hover::after {
+.card-cta2:hover::after,
+.card-cta3:hover::after {
   transform: scale(1.4);
   right: -10px;
   top: -10px;
@@ -476,14 +481,16 @@
 
   .card-cta,
   .card-cta1,
-  .card-cta2 {
+  .card-cta2,
+  .card-cta3 {
     padding: 9px 16px;
     font-size: 14px;
   }
 
   .card-cta::before,
   .card-cta1::before,
-  .card-cta2::before {
+  .card-cta2::before,
+  .card-cta3::before {
     right: 12px;
   }
 }
@@ -1892,24 +1899,21 @@
 }
 
 .home-newsletter {
-  gap: var(--dl-layout-space-threeunits);
+  gap: var(--dl-layout-space-oneandhalfunits);
   width: 100%;
-  height: 514px;
   display: flex;
   max-width: var(--dl-layout-size-maxwidth);
   align-items: center;
-  padding-top: 120px;
-  border-color: var(--dl-color-gray-black);
+  padding-top: 80px;
+  padding-bottom: 80px;
   padding-left: var(--dl-layout-space-oneandhalfunits);
-  margin-bottom: 120px;
   padding-right: var(--dl-layout-space-oneandhalfunits);
+  margin-bottom: 60px;
   flex-direction: column;
-  padding-bottom: 120px;
   justify-content: center;
-  border-top-width: 1px;
-  border-bottom-width: 1px;
   margin-left: auto;
   margin-right: auto;
+  background: radial-gradient(circle at center, #fafff9 0%, #ffffff 100%);
 }
 
 .home-header4 {
@@ -1930,19 +1934,21 @@
 .home-text42 {
   color: rgb(18, 40, 33);
   width: 100%;
-  font-size: 56px;
+  font-size: 42px;
   max-width: 800px;
   font-style: normal;
   text-align: center;
-  font-weight: 500;
+  font-weight: 600;
+  margin-bottom: 16px;
 }
 
 .home-text43 {
   color: rgb(18, 40, 33);
   width: 100%;
-  font-size: 20px;
+  font-size: 18px;
   text-align: center;
-  line-height: 30px;
+  line-height: 1.5;
+  margin-bottom: 32px;
 }
 
 .home-content3 {
@@ -1955,19 +1961,22 @@
 }
 
 .home-email {
-  width: 400px;
-  height: 60px;
+  width: 500px;
+  max-width: 100%;
   display: flex;
   overflow: hidden;
   align-items: center;
-  padding-top: 2px;
-  padding-left: var(--dl-layout-space-oneandhalfunits);
-  border-radius: 60px;
-  padding-right: 2px;
+  padding: 12px 0;
   flex-direction: row;
-  padding-bottom: 2px;
   justify-content: center;
-  background-color: #F3F3F3;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+.home-email:focus-within {
+  border-bottom-color: #408770;
 }
 
 .home-textinput {
@@ -1984,16 +1993,19 @@
   cursor: pointer;
   height: 56px;
   display: flex;
-  transition: 0.3s;
+  transition: all 0.3s ease;
   align-items: center;
   border-radius: var(--dl-layout-radius-round);
   flex-direction: row;
   justify-content: center;
-  background-color: #122821;
+  background: linear-gradient(135deg, #122821 0%, #408770 100%);
+  border: none;
 }
 
 .home-submit:hover {
-  background-color: #408770;
+  background: linear-gradient(135deg, #408770 0%, #122821 100%);
+  transform: scale(1.08);
+  box-shadow: 0 4px 15px rgba(18, 40, 33, 0.3);
 }
 
 .home-image7 {
@@ -2006,20 +2018,20 @@
 .home-notice1 {
   width: 100%;
   display: flex;
-  max-width: 400px;
-  align-items: flex-start;
-  padding-left: 27px;
+  max-width: 450px;
+  margin-top: 16px;
+  align-items: center;
   flex-direction: column;
   justify-content: center;
 }
 
 .home-notice2 {
-  color: rgb(18, 40, 33);
+  color: #64748b;
   width: 100%;
-  font-size: 12px;
-  max-width: 305px;
+  font-size: 13px;
+  text-align: center;
   font-family: "Lato";
-  line-height: 15px;
+  line-height: 1.4;
 }
 
 .home-fragment4 {
@@ -3106,6 +3118,7 @@
   font-weight: 700 !important;
   line-height: normal !important;
 }
+
 /* Enhanced Mobile Menu Buttons (Full Opacity) */
 .mobile-links .home-button1,
 .mobile-links .home-button2 {
@@ -3136,7 +3149,7 @@
   padding: 8px !important;
   margin-top: -8px !important;
   margin-bottom: 16px !important;
-  box-shadow: inset 0 2px 6px rgba(0,0,0,0.06) !important;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.06) !important;
   width: 100% !important;
 }
 
@@ -3152,6 +3165,7 @@
     position: relative !important;
     width: 100% !important;
   }
+
   .home-menu-close {
     position: absolute !important;
     right: 0 !important;
@@ -3166,6 +3180,7 @@
     padding: 60px 20px !important;
     justify-content: center !important;
   }
+
   .home-header3 {
     gap: 30px !important;
   }
