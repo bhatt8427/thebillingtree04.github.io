@@ -80,6 +80,8 @@
   <link rel="stylesheet" href="https://unpkg.com/animate.css@4.1.1/animate.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" />
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -107,61 +109,11 @@
     }
 
     .home-container1 {
-      padding-top: 72px;
-    }
-
-    .home-hero {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      padding: 36px 16px;
-      min-height: 60vh;
-    }
-
-    .home-image3 {
-      max-width: 100%;
-      height: auto;
-      display: block;
+      padding-top: 140px;
+      /* Increased for better header clearance */
     }
 
     @media (max-width:768px) {
-      .home-hero {
-        flex-direction: column;
-        padding: 24px 20px 0 20px !important;
-        min-height: auto !important;
-        gap: 24px !important;
-      }
-
-      .home-container1 {
-        padding-top: 48px;
-      }
-
-      .home-title1 {
-        font-size: 2.8rem !important;
-        line-height: 1.1 !important;
-        margin-bottom: 16px !important;
-        text-align: center;
-      }
-
-      .home-description1 {
-        font-size: 1.1rem !important;
-        line-height: 1.4 !important;
-        text-align: center;
-      }
-
-      .home-image2 {
-        height: 300px !important;
-        align-items: flex-start !important;
-        margin-top: 20px !important;
-        margin-bottom: 0 !important;
-      }
-
-      .home-content1 {
-        align-items: center !important;
-        display: flex;
-        flex-direction: column;
-      }
 
       /* Logo Grid Fix */
       .thq-grid-6 {
@@ -221,12 +173,63 @@
         font-size: 14px !important;
       }
 
+      .home-container1 {
+        padding-top: 110px !important;
+      }
+
     }
   </style>
 
 </head>
 
 <body>
+  <div class="falling-leaves-container" aria-hidden="true">
+    <!-- Row 1: Slow Drift -->
+    <div class="leaf" style="left: 5%; animation: fall-sway 32s linear infinite; animation-delay: -5s;">🍃</div>
+    <div class="leaf" style="left: 15%; animation: fall 38s linear infinite; animation-delay: -12s;">🍂</div>
+    <div class="leaf" style="left: 25%; animation: fall-sway 42s linear infinite; animation-delay: -2s;">🌿</div>
+    <div class="leaf" style="left: 35%; animation: fall 35s linear infinite; animation-delay: -25s;">🌾</div>
+    <div class="leaf" style="left: 45%; animation: fall-windy 40s ease-in-out infinite; animation-delay: -8s;">🍃</div>
+    <div class="leaf" style="left: 55%; animation: fall-sway 37s linear infinite; animation-delay: -18s;">🍂</div>
+    <div class="leaf" style="left: 65%; animation: fall 44s linear infinite; animation-delay: -30s;">🌿</div>
+    <div class="leaf" style="left: 75%; animation: fall-windy 39s ease-out infinite; animation-delay: -10s;">🌾</div>
+    <div class="leaf" style="left: 85%; animation: fall-sway 41s linear infinite; animation-delay: -15s;">🍃</div>
+    <div class="leaf" style="left: 95%; animation: fall 36s linear infinite; animation-delay: -7s;">🍂</div>
+
+    <!-- Row 2: Added Density -->
+    <div class="leaf" style="left: 10%; animation: fall-sway 45s linear infinite; animation-delay: -20s;">🌿</div>
+    <div class="leaf" style="left: 20%; animation: fall-windy 34s ease-in-out infinite; animation-delay: -3s;">🍃</div>
+    <div class="leaf" style="left: 30%; animation: fall-sway 39s linear infinite; animation-delay: -28s;">🍂</div>
+    <div class="leaf" style="left: 40%; animation: fall 43s linear infinite; animation-delay: -11s;">🌾</div>
+    <div class="leaf" style="left: 50%; animation: fall-sway 31s ease-out infinite; animation-delay: -22s;">🌿</div>
+    <div class="leaf" style="left: 60%; animation: fall-windy 46s linear infinite; animation-delay: -6s;">🍃</div>
+    <div class="leaf" style="left: 70%; animation: fall-sway 33s linear infinite; animation-delay: -35s;">🍂</div>
+    <div class="leaf" style="left: 80%; animation: fall 40s linear infinite; animation-delay: -14s;">🌾</div>
+    <div class="leaf" style="left: 90%; animation: fall-windy 38s ease-in-out infinite; animation-delay: -27s;">🌿</div>
+
+    <!-- Row 3: Foreground/Background Variation -->
+    <div class="leaf"
+      style="left: 2%; animation: fall 48s linear infinite; animation-delay: -19s; font-size: 20px; opacity: 0.12;">🍃
+    </div>
+    <div class="leaf"
+      style="left: 18%; animation: fall-sway 36s linear infinite; animation-delay: -32s; font-size: 30px; opacity: 0.22;">
+      🍂</div>
+    <div class="leaf"
+      style="left: 32%; animation: fall-windy 41s ease-out infinite; animation-delay: -1s; font-size: 22px; opacity: 0.15;">
+      🌿</div>
+    <div class="leaf"
+      style="left: 48%; animation: fall 39s linear infinite; animation-delay: -21s; font-size: 28px; opacity: 0.2;">🌾
+    </div>
+    <div class="leaf"
+      style="left: 62%; animation: fall-sway 44s linear infinite; animation-delay: -38s; font-size: 24px; opacity: 0.18;">
+      🍃</div>
+    <div class="leaf"
+      style="left: 78%; animation: fall-windy 35s ease-in-out infinite; animation-delay: -9s; font-size: 32px; opacity: 0.25;">
+      🍂</div>
+    <div class="leaf"
+      style="left: 92%; animation: fall 42s linear infinite; animation-delay: -24s; font-size: 20px; opacity: 0.13;">🌿
+    </div>
+  </div>
 
   <div class="home-container1">
 
@@ -235,9 +238,6 @@
       <div class="home-navbar-interactive">
 
         <div class="home-branding1">
-          <svg viewBox="0 0 1024 1024" class="home-icon10">
-            <path d="M128 128h768v768h-768z"></path>
-          </svg>
           <a href="index.html" class="home-text10">The Billing Tree</a>
         </div>
 
@@ -299,22 +299,46 @@
 
 
     <header class="home-hero">
+      <!-- Premium Background Blobs -->
+      <div class="hero-bg-blobs" aria-hidden="true">
+        <div class="blob-1"></div>
+        <div class="blob-2"></div>
+      </div>
+
       <div class="home-content1">
-        <h1 class="home-title1" data-aos="fade-up">The Billing Tree</h1>
-        <span class="home-description1">
+        <div class="title-container" data-aos="fade-down" data-aos-delay="200">
+          <h1 class="home-title1">The Billing Tree</h1>
+        </div>
+        <span class="home-description1" data-aos="fade-up" data-aos-delay="400">
           In the dense jungle of healthcare operations, The Billing Tree rises as a startup rooted in clarity, speed and
           automation. We’re
           not just about billing — we’re about transforming the entire
           patient experience from check-in to check-out.
         </span>
+
+        <!-- Floating Pills for content side -->
+        <div class="floating-pills-left">
+          <div class="feature-pill pill-1" data-aos="zoom-in" data-aos-delay="600">
+            <i class="fas fa-bolt"></i> <span>AI-Powered</span>
+          </div>
+          <div class="feature-pill pill-2" data-aos="zoom-in" data-aos-delay="800">
+            <i class="fas fa-shield-alt"></i> <span>Secure & Fast</span>
+          </div>
+          <div class="feature-pill pill-3" data-aos="zoom-in" data-aos-delay="900">
+            <i class="fas fa-chart-line"></i> <span>99% Accuracy</span>
+          </div>
+          <div class="feature-pill pill-4" data-aos="zoom-in" data-aos-delay="1000">
+            <i class="fas fa-user-check"></i> <span>Patient First</span>
+          </div>
+        </div>
+
         <img alt="line" src="public/line-300w.png" class="home-image1" loading="lazy" decoding="async" />
       </div>
 
       <div class="home-image2">
-        <div class="home-image-inner">
+        <div class="home-image-inner" data-aos="fade-up" data-aos-delay="300">
           <img alt="hero-1" src="public/Home page.png" class="home-image3" fetchpriority="high" loading="eager"
             decoding="async" width="620" height="700" />
-          <span class="home-image-sheen" aria-hidden="true"></span>
         </div>
       </div>
     </header>
@@ -327,7 +351,7 @@
     </div>
 
     <!-- MISSION -->
-    <section class="home-mission1">
+    <section class="home-mission1" data-aos="fade-up">
       <h2 class="home-text17">
         The Billing Tree helps providers grow stronger, patients feel seen,
         and operations stay smooth
@@ -337,7 +361,7 @@
 
     <!-- ABOUT SECTION -->
     <section class="home-improve">
-      <div class="home-heading">
+      <div class="home-heading" data-aos="fade-up">
         <h2 class="home-text18">Your Revenue, Rooted in Precision – The Medical Billing Tree That
           Grows Trust, One Claim at a Time. </h2>
       </div>
@@ -347,7 +371,7 @@
           <span class="switch switch-active">Connect with professionals</span>
         </div>
 
-        <div class="home-content2" id="about">
+        <div class="home-content2" id="about" data-aos="fade-up">
           <div class="home-details">
             <div class="home-header2">
               <h2 class="home-text19">About Us</h2>
@@ -373,7 +397,7 @@
         </div>
 
         <!-- SPECIALIZATION SECTION -->
-        <div class="features9-layout186 thq-section-padding">
+        <div class="features9-layout186 thq-section-padding" data-aos="fade-up">
           <div class="thq-flex-column thq-section-max-width">
 
             <h2 class="features9-text1 thq-heading-2">Healthcare Services Specialization</h2>
@@ -594,7 +618,7 @@
 
 
     <!-- SOFTWARE LOGOS -->
-    <section class="logos1-container1 thq-section-padding">
+    <section class="logos1-container1 thq-section-padding" data-aos="fade-up">
       <div class="logos1-max-width thq-section-max-width">
 
         <h2 class="logos1-text1 thq-heading-2">Expertise Across 40+ EHR Platforms</h2>
@@ -641,7 +665,7 @@
 
     <!-- NEWSLETTER -->
     <!-- Newsletter Section -->
-    <section class="home-newsletter">
+    <section class="home-newsletter" data-aos="fade-up">
       <div class="home-header4">
         <form id="newsletterForm" action="https://formspree.io/f/xqanzlnv" method="POST">
           <h2 class="home-text42">Subscribe to our newsletter</h2>
@@ -889,7 +913,8 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
       AOS.init({
-        duration: 800,
+        duration: 1200,
+        easing: 'ease-out-cubic',
         once: true,
         offset: 100
       });

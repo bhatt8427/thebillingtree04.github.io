@@ -122,6 +122,11 @@
       padding: 90px 0
     }
 
+    .section-hero-padding {
+      padding-top: 160px;
+      /* Enhanced vertical gap */
+    }
+
     .container {
       max-width: 1180px;
       margin: auto;
@@ -143,47 +148,106 @@
     /* ================= HERO ================= */
     .hero {
       display: flex;
-      gap: 40px;
+      gap: 50px;
       align-items: center;
-      padding: 60px;
-      background: linear-gradient(135deg, rgba(6, 182, 212, .16), rgba(45, 212, 191, .14));
-      border-radius: 26px;
-      box-shadow: 0 24px 60px rgba(6, 182, 212, .14)
+      padding: 60px 50px;
+      background: linear-gradient(135deg, rgba(6, 182, 212, .12), rgba(45, 212, 191, .08));
+      border-radius: 32px;
+      box-shadow: 0 30px 70px -20px rgba(6, 182, 212, .15);
+      margin-bottom: 20px;
+    }
+
+    .hero-text {
+      flex: 1.2;
     }
 
     .hero h1 {
-      font-size: 2.7rem;
-      margin: 0
+      font-size: 3.2rem;
+      margin: 0;
+      color: var(--forest);
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
     }
 
     .hero p {
-      font-size: 1.05rem;
-      margin-top: 18px
+      font-size: 1.15rem;
+      margin-top: 20px;
+      line-height: 1.6;
+      opacity: 0.85;
     }
 
-    .logo-bubble {
-      width: 220px;
-      height: 220px;
-      border-radius: 24px;
-      background: linear-gradient(135deg, var(--accent1), var(--accent2));
-      color: #fff;
-      font-weight: 900;
+    .training-visual-card {
+      flex: 1;
+      position: relative;
+      background: rgba(255, 255, 255, 0.45);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 28px;
+      padding: 12px;
+      box-shadow:
+        0 25px 50px -12px rgba(0, 0, 0, 0.12),
+        inset 0 0 30px rgba(255, 255, 255, 0.3);
+      animation: float-soft 8s ease-in-out infinite;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      animation: float 6s ease-in-out infinite
     }
 
-    @keyframes float {
+    .training-image {
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+      display: block;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .training-visual-card:hover .training-image {
+      transform: scale(1.04);
+    }
+
+    .visual-glow {
+      position: absolute;
+      width: 150%;
+      height: 150%;
+      background: radial-gradient(circle, rgba(45, 212, 191, 0.15) 0%, transparent 70%);
+      top: -25%;
+      left: -25%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    @keyframes float-soft {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+
       50% {
-        transform: translateY(-12px)
+        transform: translateY(-15px) rotate(1deg);
       }
     }
 
     @media(max-width:900px) {
       .hero {
-        flex-direction: column
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 24px;
+      }
+
+      .section-hero-padding {
+        padding-top: 115px;
+      }
+
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+
+      .training-visual-card {
+        width: 100%;
+        max-width: 450px;
       }
     }
 
@@ -304,9 +368,6 @@
     <div class="home-navbar-interactive">
 
       <div class="home-branding1">
-        <svg viewBox="0 0 1024 1024" class="home-icon10">
-          <path d="M128 128h768v768h-768z"></path>
-        </svg>
         <a href="index.html" class="home-text10">The Billing Tree</a>
       </div>
 
@@ -368,13 +429,18 @@
   </div>
 
   <!-- HERO -->
-  <section class="container">
+  <section class="container section-hero-padding">
     <div class="hero reveal">
-      <div>
+      <div class="hero-text">
         <h1>RCM Training Program</h1>
         <p>Industry-ready Revenue Cycle Management training designed for real healthcare workflows.</p>
       </div>
-      <div class="logo-bubble">RCM<br>Training</div>
+      <div class="training-visual-card">
+        <div class="visual-glow"></div>
+        <img
+          src="C:/Users/Bhatt/.gemini/antigravity/brain/8b67c70a-6fe2-4c05-9f54-62e9532d8dc7/rcm_training_visual_1768094544467.png"
+          alt="RCM Training Visual" class="training-image" />
+      </div>
     </div>
   </section>
 
@@ -464,6 +530,15 @@
 
       window.openPopup = function () { if (popup) popup.style.display = 'flex'; };
       window.closePopup = function () { if (popup) popup.style.display = 'none'; };
+
+      // Close popup when clicking outside the popup box
+      if (popup) {
+        popup.addEventListener('click', function (e) {
+          if (e.target === popup) {
+            closePopup();
+          }
+        });
+      }
     })();
 
     /* Mobile Menu Implementation */
