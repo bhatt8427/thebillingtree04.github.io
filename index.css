@@ -1248,22 +1248,48 @@
 
 /* Feature Pills */
 .feature-pill {
-  position: absolute;
+  position: relative;
   display: flex;
   align-items: center;
   gap: 12px;
   padding: 14px 24px;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.82);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.9);
   border-radius: 999px;
-  box-shadow: 0 12px 30px -5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 12px 30px -5px rgba(0, 0, 0, 0.08);
   font-weight: 700;
   font-size: 15px;
   color: #132e2b;
   z-index: 30;
   white-space: nowrap;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Cursor Highlight Layer */
+.feature-pill::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(45, 212, 191, 0.25) 0%,
+      transparent 80%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.feature-pill:hover::before {
+  opacity: 1;
+}
+
+.feature-pill:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px -8px rgba(45, 212, 191, 0.2);
+  border-color: rgba(45, 212, 191, 0.3);
 }
 
 .feature-pill i {
