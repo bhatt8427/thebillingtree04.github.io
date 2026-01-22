@@ -13,63 +13,113 @@
   <link rel="shortcut icon" href="./favicon.ico">
   <meta name="theme-color" content="#ffffff">
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://unpkg.com/animate.css@4.1.1/animate.css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" />
   <link rel="stylesheet" href="./index.css" />
   <style>
     body {
-      font-family: 'Lora', serif;
-      background-color: var(--dl-color-gray-white, #fff);
-      color: var(--dl-color-gray-black, #111);
+      font-family: 'Lato', sans-serif;
+      background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
       margin: 0;
       padding: 0;
     }
 
-    .book-call-section {
-      max-width: 700px;
-      margin: 80px auto;
-      padding: 20px;
-      background: #f9f9f9;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    /* Override container z-index to sit above leaves */
+    .home-container1 {
+      position: relative;
+      z-index: 10;
+      background: transparent !important;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
-    .book-call-section h1 {
-      font-size: 2rem;
-      margin-bottom: 10px;
-      text-align: center;
+    .book-call-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 20px 40px;
+      /* Top padding for fixed header */
     }
 
-    .book-call-section p {
+    .book-call-card {
+      width: 100%;
+      max-width: 800px;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(18, 40, 33, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      padding: 32px 40px;
+      position: relative;
+    }
+
+    .book-call-card h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: #122821;
       text-align: center;
-      margin-bottom: 30px;
+      margin: 0 0 8px 0;
+    }
+
+    .book-call-card p.subtitle {
+      text-align: center;
       color: #555;
+      font-size: 0.95rem;
+      margin-bottom: 24px;
     }
 
     form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 20px;
+      row-gap: 16px;
+    }
+
+    .form-group {
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      position: relative;
+      /* For error positioning if needed later */
+    }
+
+    .full-width {
+      grid-column: span 2;
     }
 
     label {
-      display: flex;
-      flex-direction: column;
-      font-weight: 500;
-      color: #333;
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: #344054;
+      margin-bottom: 6px;
     }
 
     input,
     select,
     textarea {
-      margin-top: 5px;
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 1rem;
-      font-family: inherit;
+      width: 100%;
+      padding: 10px 12px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid #d0d5dd;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      color: #101828;
+      transition: all 0.2s ease;
+      font-family: 'Lato', sans-serif;
+      box-sizing: border-box;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #408770;
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(64, 135, 112, 0.15);
     }
 
     textarea {
@@ -78,109 +128,86 @@
     }
 
     button[type="submit"] {
-      background-color: #2e7d32;
-      /* Green tone like your site */
-      color: #fff;
-      padding: 12px 20px;
+      grid-column: span 2;
+      background: #122821;
+      color: white;
+      padding: 12px;
       font-size: 1rem;
       font-weight: 600;
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: all 0.2s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 8px;
     }
 
     button[type="submit"]:hover {
-      background-color: #1b5e20;
+      background: #408770;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(18, 40, 33, 0.2);
     }
 
-    @media (max-width: 768px) {
-      .book-call-section {
-        margin: 40px 20px;
-        padding: 15px;
+    #bookCallMessage {
+      grid-column: span 2;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      padding: 10px;
+    }
+
+    /* Fix excessive scrolling by clamping animation height on this short page */
+    .falling-leaves-container {
+      height: 100vh !important;
+      position: fixed !important;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 650px) {
+      .book-call-wrapper {
+        padding-top: 80px;
       }
-    }
 
-    /* Creative demo panel styles */
-    .demo-panel {
-      max-width: 900px;
-      margin: 100px auto 60px;
-      background: linear-gradient(180deg, #FFFFFF, #F7FFF6);
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 12px 36px rgba(11, 22, 33, 0.06);
-      display: grid;
-      grid-template-columns: 1fr 300px;
-      gap: 18px;
-      align-items: center;
-    }
+      .book-call-card {
+        padding: 24px 20px;
+      }
 
-    .demo-panel h2 {
-      margin: 0 0 8px 0;
-      font-family: Lora, serif;
-      font-size: 24px;
-      color: #122821;
-    }
-
-    .demo-panel p {
-      margin: 0 0 12px 0;
-      color: rgba(18, 40, 33, 0.85);
-    }
-
-    .demo-features {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .demo-features li {
-      background: rgba(18, 40, 33, 0.04);
-      padding: 8px 10px;
-      border-radius: 8px;
-      font-size: 14px;
-    }
-
-    .demo-panel-preview {
-      width: 100%;
-      height: 140px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #E6F9E0, #FFFFFF);
-      color: rgba(18, 40, 33, 0.6);
-      font-weight: 700;
-    }
-
-    .demo-cta {
-      margin-top: 12px;
-    }
-
-    .demo-cta a.button {
-      background: linear-gradient(90deg, #0f6a56, #0b5a49);
-      color: #fff;
-      padding: 10px 16px;
-      border-radius: 8px;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    @media (max-width:780px) {
-      .demo-panel {
+      form {
         grid-template-columns: 1fr;
+        row-gap: 16px;
       }
 
-      .demo-panel-preview {
-        height: 160px;
+      .full-width,
+      button[type="submit"],
+      #bookCallMessage {
+        grid-column: span 1;
       }
     }
   </style>
 </head>
 
 <body>
+  <!-- The falling leaves container is now handled globally via index.css -->
+  <div class="falling-leaves-container" aria-hidden="true">
+    <!-- Leaves content replicated from index.css logic if needed, 
+          but index.css handles the container. We need the HTML elements though. -->
+    <!-- Row 1 -->
+    <div class="leaf" style="left: 5%; animation: leaf-sway 18s linear infinite; animation-delay: -2s;">🍃</div>
+    <div class="leaf" style="left: 15%; animation: leaf-fall 24s linear infinite; animation-delay: -8s;">🍂</div>
+    <div class="leaf" style="left: 25%; animation: leaf-sway 20s linear infinite; animation-delay: -5s;">🌿</div>
+    <div class="leaf" style="left: 35%; animation: leaf-fall 22s linear infinite; animation-delay: -12s;">🌾</div>
+    <div class="leaf" style="left: 45%; animation: leaf-windy 25s ease-in-out infinite; animation-delay: -3s;">🍃</div>
+    <div class="leaf" style="left: 55%; animation: leaf-sway 19s linear infinite; animation-delay: -15s;">🍂</div>
+    <div class="leaf" style="left: 65%; animation: leaf-fall 28s linear infinite; animation-delay: -10s;">🌿</div>
+    <div class="leaf" style="left: 75%; animation: leaf-windy 23s ease-out infinite; animation-delay: -6s;">🌾</div>
+    <div class="leaf" style="left: 85%; animation: leaf-sway 21s linear infinite; animation-delay: -9s;">🍃</div>
+    <div class="leaf" style="left: 95%; animation: leaf-fall 26s linear infinite; animation-delay: -4s;">🍂</div>
+    <!-- Row 2 -->
+    <div class="leaf" style="left: 10%; animation: leaf-sway 29s linear infinite; animation-delay: -14s;">🌿</div>
+    <div class="leaf" style="left: 40%; animation: leaf-fall 32s linear infinite; animation-delay: -7s;">🌾</div>
+    <div class="leaf" style="left: 70%; animation: leaf-windy 30s linear infinite; animation-delay: -11s;">🍂</div>
+  </div>
+
   <div class="home-container1">
     <header class="home-header1">
       <div class="home-navbar-interactive">
@@ -244,142 +271,146 @@
       </nav>
     </div>
 
-    <section class="book-call-section">
-      <h1>Book a Call with The Billing Tree</h1>
-      <p>Fill out the form below and we'll reach out to schedule a call.</p>
+    <div class="book-call-wrapper">
+      <section class="book-call-card">
+        <h1>Book a Call</h1>
+        <p class="subtitle">Schedule a consultation with our experts.</p>
 
-      <form id="book-call-form" action="https://formspree.io/f/movbgdal" method="POST">
-        <label>
-          Name:
-          <input type="text" name="name" required />
-        </label>
+        <form id="book-call-form" action="https://formspree.io/f/movbgdal" method="POST">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" name="name" required />
+          </div>
 
-        <label>
-          Practice Name:
-          <input type="text" name="practice_name" required />
-        </label>
+          <div class="form-group">
+            <label>Practice Name</label>
+            <input type="text" name="practice_name" required />
+          </div>
 
-        <label>
-          Email:
-          <input type="email" name="email" id="email" placeholder="example@domain.com" required />
-        </label>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="email" id="email" placeholder="example@domain.com" required />
+          </div>
 
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" name="phone" id="phone" pattern="\d{10}" maxlength="10" placeholder="1234567890"
+              required />
+          </div>
 
-        <label>
-          Phone:
-          <input type="tel" name="phone" id="phone" pattern="\d{10}" maxlength="10" placeholder="1234567890" required />
-        </label>
+          <div class="form-group">
+            <label>Specialty</label>
+            <input type="text" name="specialty" />
+          </div>
 
+          <div class="form-group">
+            <label>Services Needed</label>
+            <input type="text" name="services_needed" />
+          </div>
 
+          <div class="form-group full-width">
+            <label>Preferred Contact Method</label>
+            <select name="contact_method">
+              <option value="phone">Phone</option>
+              <option value="email">Email</option>
+            </select>
+          </div>
 
-        <label>
-          Specialty:
-          <input type="text" name="specialty" />
-        </label>
+          <div class="form-group full-width">
+            <label>Notes</label>
+            <textarea name="notes" placeholder="Tell us more about your needs..."></textarea>
+          </div>
 
-        <label>
-          Services Needed:
-          <input type="text" name="services_needed" />
-        </label>
+          <button type="submit">Submit Request</button>
+          <div id="bookCallMessage" style="display:none;"></div>
+        </form>
+      </section>
+    </div>
 
-        <label>
-          Preferred Contact Method:
-          <select name="contact_method">
-            <option value="phone">Phone</option>
-            <option value="email">Email</option>
-          </select>
-        </label>
+    <script>
+      (function () {
+        const form = document.getElementById('book-call-form');
+        const email = form.querySelector('input[name="email"]');
+        const phone = form.querySelector('input[name="phone"]');
+        const msg = document.getElementById('bookCallMessage');
 
-        <label>
-          Notes:
-          <textarea name="notes"></textarea>
-        </label>
+        function show(text, color, bgColor) {
+          msg.style.display = 'block';
+          msg.style.color = color;
+          msg.style.backgroundColor = bgColor;
+          msg.textContent = text;
+        }
+        // sanitize phone input as user types
+        phone.addEventListener('input', () => { phone.value = phone.value.replace(/\D/g, '').slice(0, 10); });
 
-        <button type="submit">Submit</button>
-        <div id="bookCallMessage" style="margin-top:10px;display:none;text-align:center;"></div>
-      </form>
+        form.addEventListener('submit', async function (e) {
+          e.preventDefault();
+          msg.style.display = 'none';
+          const emailVal = (email.value || '').trim();
+          const phoneVal = (phone.value || '').replace(/\D/g, '').slice(0, 10);
+          const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-      <script>
-        (function () {
-          const form = document.getElementById('book-call-form');
-          const email = form.querySelector('input[name="email"]');
-          const phone = form.querySelector('input[name="phone"]');
-          const msg = document.getElementById('bookCallMessage');
-
-          function show(text, color) { msg.style.display = 'block'; msg.style.color = color; msg.textContent = text; }
-          // sanitize phone input as user types
-          phone.addEventListener('input', () => { phone.value = phone.value.replace(/\D/g, '').slice(0, 10); });
-
-          form.addEventListener('submit', async function (e) {
-            e.preventDefault();
-            msg.style.display = 'none';
-            const emailVal = (email.value || '').trim();
-            const phoneVal = (phone.value || '').replace(/\D/g, '').slice(0, 10);
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-            if (!emailPattern.test(emailVal)) {
-              show('Please enter a valid email address.', 'red');
-              return;
-            }
-            if (phoneVal.length !== 10) {
-              show('Please enter a valid 10-digit phone number.', 'red');
-              return;
-            }
-
-            // ensure cleaned phone is set
-            phone.value = phoneVal;
-
-            const formData = new FormData(form);
-            try {
-              const res = await fetch(form.action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } });
-              if (res.ok) {
-                show('Thanks — we will contact you shortly.', 'green');
-                form.reset();
-              } else {
-                show('Submission failed — please try again.', 'red');
-              }
-            } catch (err) {
-              show('Network error — please try later.', 'red');
-            }
-          });
-        })();
-      </script>
-
-      <script>
-        // Mobile menu toggle (same behavior as index.html)
-        (function () {
-          const openBtn = document.getElementById('mobile-menu-open');
-          const closeBtn = document.getElementById('mobile-menu-close');
-          const mobile = document.getElementById('mobile-menu');
-          if (!mobile) return;
-          function open() { mobile.classList.add('open'); mobile.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; }
-          function close() { mobile.classList.remove('open'); mobile.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; }
-          openBtn && openBtn.addEventListener('click', open);
-          closeBtn && closeBtn.addEventListener('click', close);
-
-          // Handle dropdown toggle in mobile
-          const dropdown = mobile.querySelector('.dropdown');
-          const dropbtn = dropdown ? dropdown.querySelector('.dropbtn') : null;
-          if (dropbtn) {
-            dropbtn.addEventListener('click', (e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              dropdown.classList.toggle('open');
-            });
+          if (!emailPattern.test(emailVal)) {
+            show('Please enter a valid email address.', '#721c24', '#f8d7da');
+            return;
+          }
+          if (phoneVal.length !== 10) {
+            show('Please enter a valid 10-digit phone number.', '#721c24', '#f8d7da');
+            return;
           }
 
-          // close when clicking a link (but NOT the dropdown button itself)
-          mobile.querySelectorAll('a').forEach(a => {
-            if (!a.classList.contains('dropbtn')) {
-              a.addEventListener('click', close);
-            }
-          });
+          // ensure cleaned phone is set
+          phone.value = phoneVal;
 
-          mobile.addEventListener('click', (e) => { if (e.target === mobile) close(); });
-          document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
-        })();
-      </script>
-    </section>
+          const formData = new FormData(form);
+          try {
+            const res = await fetch(form.action, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } });
+            if (res.ok) {
+              show('Thanks — we will contact you shortly.', '#155724', '#d4edda');
+              form.reset();
+            } else {
+              show('Submission failed — please try again.', '#721c24', '#f8d7da');
+            }
+          } catch (err) {
+            show('Network error — please try later.', '#721c24', '#f8d7da');
+          }
+        });
+      })();
+
+      // Mobile Menu Logic
+      (function () {
+        const openBtn = document.getElementById('mobile-menu-open');
+        const closeBtn = document.getElementById('mobile-menu-close');
+        const mobile = document.getElementById('mobile-menu');
+
+        if (!mobile) return;
+
+        function open() { mobile.classList.add('open'); mobile.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; }
+        function close() { mobile.classList.remove('open'); mobile.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; }
+
+        openBtn && openBtn.addEventListener('click', open);
+        closeBtn && closeBtn.addEventListener('click', close);
+
+        const dropdown = mobile.querySelector('.dropdown');
+        const dropbtn = dropdown ? dropdown.querySelector('.dropbtn') : null;
+        if (dropbtn) {
+          dropbtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dropdown.classList.toggle('open');
+          });
+        }
+
+        mobile.querySelectorAll('a').forEach(a => {
+          if (!a.classList.contains('dropbtn')) {
+            a.addEventListener('click', close);
+          }
+        });
+
+        mobile.addEventListener('click', (e) => { if (e.target === mobile) close(); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+      })();
+    </script>
 
   </div>
 </body>
