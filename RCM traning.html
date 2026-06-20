@@ -370,87 +370,91 @@
 </head>
 
 <body>
+    <div class="home-container1">
 
-  <!-- HEADER -->
-  <header class="home-header1">
-    <div class="home-navbar-interactive">
+        <!-- NAVBAR -->
+        <header class="home-header1">
+            <div class="home-navbar-interactive">
 
-      <div class="home-branding1">
-        <a href="index.html" class="home-text10">The Billing Tree</a>
-      </div>
+                <div class="home-branding1">
+                    <a href="index.html" class="home-text10">The Billing Tree</a>
+                </div>
 
-      <nav class="home-desktop-menu">
-        <div class="home-links1">
-          <a href="index.html" class="home-button1 button">Home</a>
-          <div class="dropdown">
-            <button class="home-button1 button dropbtn">Services</button>
-            <div class="dropdown-content">
-              <a href="frontend.html">Front End</a>
-              <a href="midcycle.html">Mid Cycle</a>
-              <a href="backend.html">Back End</a>
-              <a href="RCM traning.html">RCM Traning</a>
-                        <a href="credentialing.html">Credentialing</a>
+                <nav class="home-desktop-menu">
+                    <div class="home-links1">
+                        <a href="index.html" class="home-button1 button">Home</a>
+                        <div class="dropdown">
+                            <button class="home-button1 button dropbtn">Services</button>
+                            <div class="dropdown-content">
+                                <a href="frontend.html">Front End</a>
+                                <a href="midcycle.html">Mid Cycle</a>
+                                <a href="backend.html">Back End</a>
+                                <a href="RCM traning.html">RCM Traning</a>
+                                <a href="credentialing.html">Credentialing</a>
+                            </div>
+                        </div>
+                        <a href="index.html#contact" class="home-button1 button">Contact</a>
+                        <a href="index.html#ai-consulting" class="home-button1 button">AI Consulting</a>
+                        <a href="quote.html" class="home-button2 button">Get a fast quote</a>
+                        <div class="header-social-links">
+                            <a href="https://www.instagram.com/thebillingtree/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/company/thebillingtree/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+                <!-- mobile hamburger (visible via CSS at small widths) -->
+                <button class="home-burger-menu" id="mobile-menu-open" aria-label="Open menu">
+                    <svg width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect y="0" width="20" height="2" rx="1" fill="#122821" />
+                        <rect y="6" width="20" height="2" rx="1" fill="#122821" />
+                        <rect y="12" width="20" height="2" rx="1" fill="#122821" />
+                    </svg>
+                </button>
             </div>
-          </div>
-          <a href="index.html#contact" class="home-button1 button">Contact</a>
-          <a href="index.html#ai-consulting" class="home-button1 button">AI Consulting</a>
-          <a href="quote.html" class="home-button2 button">Get a fast quote</a>
-            <div class="header-social-links">
-              <a href="https://www.instagram.com/thebillingtree/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram">
-                <i class="fab fa-instagram"></i>
-              </a>
-              <a href="https://www.linkedin.com/company/thebillingtree/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-            </div>        </div>
-      </nav>
-      <!-- mobile hamburger (visible via CSS at small widths) -->
-      <button class="home-burger-menu" id="mobile-menu-open" aria-label="Open menu" onclick="openMobileMenu()">
-        <svg width="20" height="14" viewBox="0 0 20 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect y="0" width="20" height="2" rx="1" fill="#122821" />
-          <rect y="6" width="20" height="2" rx="1" fill="#122821" />
-          <rect y="12" width="20" height="2" rx="1" fill="#122821" />
-        </svg>
-      </button>
-    </div>
-  </header>
+        </header>
 
-  <!-- MOBILE MENU -->
-  <!-- Mobile menu (slides in) -->
-  <div class="home-mobile-menu" id="mobile-menu" aria-hidden="true">
-    <div class="home-top">
-      <div class="home-branding2">
-        <a href="index.html" class="home-text13">The Billing Tree</a>
-      </div>
-      <div class="home-menu-close">
-        <button id="mobile-menu-close" aria-label="Close menu" onclick="closeMobileMenu()">✕</button>
-      </div>
-    </div>
-    <nav class="mobile-links">
-      <a href="index.html" class="home-button1 button">Home</a>
-      <div class="dropdown">
-        <button class="home-button1 button dropbtn">Services</button>
-        <div class="dropdown-content">
-          <a href="frontend.html">Front End</a>
-          <a href="midcycle.html">Mid Cycle</a>
-          <a href="backend.html">Back End</a>
-          <a href="RCM traning.html">RCM Traning</a>
+        <!-- Mobile menu (slides in) -->
+        <div class="home-mobile-menu" id="mobile-menu" aria-hidden="true">
+            <div class="home-top">
+                <div class="home-branding2">
+                    <a href="index.html" class="home-text13">The Billing Tree</a>
+                </div>
+                <div class="home-menu-close">
+                    <button id="mobile-menu-close" aria-label="Close menu">&#10005;</button>
+                </div>
+            </div>
+            <nav class="mobile-links">
+                <a href="index.html" class="home-button1 button">Home</a>
+                <div class="dropdown">
+                    <button class="home-button1 button dropbtn">Services</button>
+                    <div class="dropdown-content">
+                        <a href="frontend.html">Front End</a>
+                        <a href="midcycle.html">Mid Cycle</a>
+                        <a href="backend.html">Back End</a>
+                        <a href="RCM traning.html">RCM Traning</a>
                         <a href="credentialing.html">Credentialing</a>
+                    </div>
+                </div>
+                <a href="index.html#contact" class="home-button1 button">Contact</a>
+                <a href="index.html#ai-consulting" class="home-button1 button">AI Consulting</a>
+                <a href="quote.html" class="home-button2 button">Get a fast quote</a>
+                <a href="book-call.html" class="home-button1 button">Book a Call</a>
+                <div class="header-social-links" style="margin-top: 15px; justify-content: center; margin-left: 0;">
+                    <a href="https://www.instagram.com/thebillingtree/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/company/thebillingtree/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </nav>
         </div>
-      </div>
-      <a href="index.html#contact" class="home-button1 button">Contact</a>
-      <a href="index.html#ai-consulting" class="home-button1 button">AI Consulting</a>
-      <a href="quote.html" class="home-button2 button">Get a fast quote</a>
-      <a href="book-call.html" class="home-button1 button">Book a Call</a>
-        <div class="header-social-links" style="margin-top: 15px; justify-content: center; margin-left: 0;">
-          <a href="https://www.instagram.com/thebillingtree/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram">
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a href="https://www.linkedin.com/company/thebillingtree/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="LinkedIn">
-            <i class="fab fa-linkedin-in"></i>
-          </a>
-        </div>    </nav>
-  </div>
+
+    </div>
 
   <!-- HERO -->
   <section class="container section-hero-padding">
@@ -692,6 +696,8 @@
 </body>
 
 </html>
+
+
 
 
 
