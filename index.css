@@ -3655,3 +3655,10 @@ body {
   position: relative;
   overflow: hidden;
 }
+
+@media (max-width: 768px) {
+  .service-card .card-content-box {
+    text-align: center;
+    align-items: center;
+  }
+}
