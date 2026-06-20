@@ -2256,7 +2256,10 @@
   }
 
   .home-branding1 {
-    display: none;
+    display: flex;
+    position: absolute;
+    left: 18px;
+    top: 10px;
   }
 }
 
@@ -2273,7 +2276,9 @@
   }
 
   .home-text10 {
-    display: none;
+    display: block;
+    font-size: 24px; /* Slightly smaller for mobile */
+    margin-top: 5px;
   }
 
   .home-icon12 {
@@ -3660,5 +3665,11 @@ body {
   .service-card .card-content-box {
     text-align: center;
     align-items: center;
+  }
+  .service-card .card-image-wrapper {
+    margin: 0 auto;
+    width: 90%;
+    border-radius: 12px;
+    margin-top: 24px;
   }
 }
