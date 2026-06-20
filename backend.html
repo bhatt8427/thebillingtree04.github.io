@@ -1045,7 +1045,7 @@
           const scrollY = window.scrollY;
           parallaxElements.forEach(el => {
             const speed = parseFloat(el.getAttribute('data-parallax'));
-            el.style.transform = 	ranslateY( + (scrollY * speed) + px);
+            el.style.transform = 'translateY(' + (scrollY * speed) + 'px)';
           });
         });
       }
