@@ -70,5 +70,91 @@
       defer=""
       src="https://unpkg.com/@teleporthq/teleport-custom-scripts"
     ></script>
-  </body>
+      <!-- Custom Cursor -->
+  <div id="custom-cursor"></div>
+  <!-- UI/UX Improvements Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const header = document.querySelector('.home-header1');
+      if (header) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 50) header.classList.add('header-scrolled');
+          else header.classList.remove('header-scrolled');
+        });
+      }
+      const validateInput = (input) => {
+        const type = input.getAttribute('type');
+        let isValid = false;
+        const val = input.value.trim();
+        if (val === '') { input.classList.remove('input-valid', 'input-invalid'); return; }
+        if (type === 'email') { isValid = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(val); } 
+        else if (type === 'tel') { isValid = /^\d{10}$/.test(val.replace(/\D/g, '')); } 
+        else { return; }
+        if (isValid) { input.classList.add('input-valid'); input.classList.remove('input-invalid'); } 
+        else { input.classList.add('input-invalid'); input.classList.remove('input-valid'); }
+      };
+      const inputs = document.querySelectorAll('input[type="email"], input[type="tel"]');
+      inputs.forEach(input => {
+        input.addEventListener('input', () => validateInput(input));
+        input.addEventListener('blur', () => validateInput(input));
+      });
+      const cursor = document.getElementById('custom-cursor');
+      if (cursor && window.matchMedia("(pointer: fine)").matches) {
+        document.addEventListener('mousemove', e => {
+          cursor.style.left = e.clientX + 'px';
+          cursor.style.top = e.clientY + 'px';
+        });
+        document.querySelectorAll('a, button, input, select, textarea, .stat-number').forEach(el => {
+          el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
+          el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
+        });
+      }
+      const parallaxElements = document.querySelectorAll('[data-parallax]');
+      if (parallaxElements.length > 0) {
+        window.addEventListener('scroll', () => {
+          const scrollY = window.scrollY;
+          parallaxElements.forEach(el => {
+            const speed = parseFloat(el.getAttribute('data-parallax'));
+            el.style.transform = 	ranslateY( + (scrollY * speed) + px);
+          });
+        });
+      }
+      const observerOptions = { root: null, rootMargin: '-30px 0px -30px 0px', threshold: 0.15 };
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            if (entry.target.classList.contains('home-improve')) {
+              const treePath = entry.target.querySelector('.growing-tree-path');
+              if (treePath) treePath.classList.add('grown');
+            }
+            if (entry.target.classList.contains('count-up')) {
+              const targetStr = entry.target.getAttribute('data-target');
+              const target = parseInt(targetStr, 10);
+              const suffix = entry.target.getAttribute('data-suffix') || '';
+              let count = 0;
+              const duration = 2000;
+              const increment = target / (duration / 16);
+              const timer = setInterval(() => {
+                count += increment;
+                if (count >= target) { count = target; clearInterval(timer); }
+                entry.target.innerText = Math.floor(count) + suffix;
+              }, 16);
+              entry.target.classList.remove('count-up');
+            }
+          }
+        });
+      }, observerOptions);
+      const improveSection = document.querySelector('.home-improve');
+      if (improveSection) observer.observe(improveSection);
+      // Delay observation until page is fully rendered and user starts scrolling
+      setTimeout(() => {
+        document.querySelectorAll('.count-up').forEach(el => observer.observe(el));
+      }, 500);
+    });
+  </script>
+</body>
 </html>
+
+
+
+
