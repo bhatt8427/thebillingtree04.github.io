@@ -3910,3 +3910,16 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+
+.specialty-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.specialty-link:hover,
+.specialty-link:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(18,40,33,.10);
+  outline: none;
+}
