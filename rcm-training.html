@@ -86,15 +86,17 @@
       padding: 90px 0
     }
 
-    .section-hero-padding {
-      padding-top: 160px;
-      /* Enhanced vertical gap */
-    }
-
     .container {
       max-width: 1180px;
       margin: auto;
       padding: 24px
+    }
+
+    .section-hero-padding {
+      padding-top: 160px;
+      padding-left: 24px;
+      padding-right: 24px;
+      /* Enhanced vertical gap */
     }
 
     /* Reveal animation */
@@ -202,7 +204,9 @@
       }
 
       .section-hero-padding {
-        padding-top: 115px;
+        padding-top: 125px;
+        padding-left: 18px;
+        padding-right: 18px;
       }
 
       .hero h1 {
@@ -427,7 +431,7 @@
       </div>
       <div class="training-visual-card">
         <div class="visual-glow"></div>
-        <img src="./public/rcm-training-hero.png" alt="RCM Training Visual" class="training-image" />
+        <img src="./public/rcm-training-hero.png" alt="Revenue Cycle Management training workflow illustration" class="training-image" loading="eager" decoding="async" />
       </div>
     </div>
   </section>
@@ -482,10 +486,10 @@
   </section>
 
   <!-- POPUP -->
-  <div class="popup-overlay" id="popup">
+  <div class="popup-overlay" id="popup" role="dialog" aria-modal="true" aria-labelledby="training-enroll-title">
     <div class="popup-box">
       <span class="close-btn" onclick="closePopup()">×</span>
-      <h3>Enroll in RCM Training</h3>
+      <h3 id="training-enroll-title">Enroll in RCM Training</h3>
       <form action="https://formspree.io/f/movbgdal" method="POST">
         <input type="text" id="name" name="name" placeholder="Full Name" required>
         <input type="email" name="email" placeholder="Email" required>
@@ -531,22 +535,31 @@
 
     /* Mobile Menu Implementation */
     (function () {
+      const openBtn = document.getElementById('mobile-menu-open');
+      const closeBtn = document.getElementById('mobile-menu-close');
       const menu = document.getElementById('mobile-menu');
       if (!menu) return;
 
-      window.openMobileMenu = function () {
+      function openMobileMenu() {
         menu.classList.add('open');
         menu.setAttribute('aria-hidden', 'false');
+        openBtn && openBtn.setAttribute('aria-expanded', 'true');
         document.body.style.overflow = 'hidden';
-      };
+      }
 
-      window.closeMobileMenu = function () {
+      function closeMobileMenu() {
         menu.classList.remove('open');
         menu.setAttribute('aria-hidden', 'true');
+        openBtn && openBtn.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
-      };
+      }
 
-      // Handle dropdown toggle in mobile
+      openBtn && openBtn.addEventListener('click', openMobileMenu);
+      closeBtn && closeBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        closeMobileMenu();
+      });
+
       const dropdown = menu.querySelector('.dropdown');
       const dropbtn = dropdown ? dropdown.querySelector('.dropbtn') : null;
       if (dropbtn) {
@@ -557,19 +570,9 @@
         });
       }
 
-      // Close menu on link click (but NOT the dropdown button) or outside click
-      menu.addEventListener('click', (e) => {
-        if (e.target === menu) {
-          closeMobileMenu();
-        } else if (e.target.tagName === 'A' && !e.target.classList.contains('dropbtn')) {
-          closeMobileMenu();
-        }
-      });
-
-      // Escape key to close
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeMobileMenu();
-      });
+      menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileMenu));
+      menu.addEventListener('click', (e) => { if (e.target === menu) closeMobileMenu(); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMobileMenu(); });
     })();
   </script>
 
