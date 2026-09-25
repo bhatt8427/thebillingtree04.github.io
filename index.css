@@ -3770,3 +3770,143 @@ body {
     padding: 52px 20px;
   }
 }
+
+
+/* Shared service-page system */
+.service-hero-inner {
+  position: relative;
+  z-index: 2;
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, .95fr);
+  gap: 52px;
+  align-items: center;
+}
+
+.service-hero-inner .hero-content {
+  max-width: 720px;
+  margin: 0;
+  text-align: left;
+}
+
+.service-hero-visual {
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.28);
+  background: rgba(255,255,255,.12);
+  box-shadow: 0 24px 60px rgba(18,40,33,.18);
+}
+
+.service-hero-visual img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+.process-section,
+.expect-section {
+  padding: 82px 24px;
+  background: #f7fbf8;
+}
+
+.expect-section {
+  background: #ffffff;
+}
+
+.process-inner,
+.expect-inner {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+}
+
+.process-kicker,
+.expect-kicker {
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: .14em;
+  font-weight: 800;
+  color: #408770;
+  margin-bottom: 10px;
+}
+
+.process-section h2,
+.expect-section h2 {
+  text-align: center;
+  color: #122821;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 4vw, 42px);
+  margin-bottom: 34px;
+}
+
+.process-grid,
+.expect-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.process-card,
+.expect-card {
+  background: #fff;
+  border: 1px solid rgba(18,40,33,.10);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 12px 32px rgba(18,40,33,.06);
+}
+
+.expect-card {
+  background: #f9fcfa;
+}
+
+.process-step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  margin-bottom: 16px;
+  background: #e6f9e0;
+  color: #122821;
+  font-weight: 800;
+}
+
+.process-card h3,
+.expect-card h3 {
+  margin-bottom: 9px;
+  color: #122821;
+  font-size: 18px;
+}
+
+.process-card p,
+.expect-card p {
+  color: #55645f;
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .service-hero-inner {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    width: min(760px, calc(100% - 36px));
+  }
+
+  .service-hero-inner .hero-content {
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .process-grid,
+  .expect-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .process-grid,
+  .expect-grid {
+    grid-template-columns: 1fr;
+  }
+}
